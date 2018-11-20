@@ -21,7 +21,7 @@ func bubbleSort(_ inputArr:[Int]) -> [Int] {
 }
 bubbleSort([32,12,12,23,11,19,81,76]) //[11, 12, 12, 19, 23, 32, 76, 81]
 
-//compact: remove every value that's not a Boolean
+//filterBools: remove every value that's not a Boolean
 func filterBools(_ inputArr: [Any]) -> [Any] {
     return inputArr.compactMap { $0 as? Bool }
     
@@ -64,12 +64,12 @@ func deepFlatten(arr: [AnyHashable]) -> [AnyHashable] {
 }
 deepFlatten(arr: [6, 5, 4, [3, 2], [1]]) //[6, 5, 4, 3, 2, 1]
 
-//return element not contained in 2 arrays
+//return element(s) not contained in both of the given arrays
 func difference(arr1: [AnyHashable], arr2: [AnyHashable]) -> Set<AnyHashable> {
     return Set(arr1).symmetricDifference(arr2)
 }
-difference(arr1: [2, 4, 6, 8], arr2: [2, 4, 6, 8, 10]) //10
-difference(arr1: ["mulan", "moana", "belle", "elsa"], arr2: ["mulan", "moana", "belle"]) //elsa
+difference(arr1: [2, 4, 6, 8], arr2: [10, 8, 6, 4, 2, 0]) //10
+difference(arr1: ["mulan", "moana", "belle", "elsa"], arr2: ["mulan", "moana", "belle", "pocahontas"]) //elsa, pocahontas
 
 //check for duplicate elements in array
 func duplicates(arr1: [AnyHashable]) -> Bool {
@@ -108,20 +108,20 @@ var foo = [1,2,3]
 shuffle(arr1: foo) //[2,3,1] , foo = [1,2,3]
 
 //median
-func med1(arr: [Int]) -> Float {
+func calcMedian(arr: [Int]) -> Float {
     return Float(arr.sorted(by: <)[arr.count / 2])
 }
-med1(arr: [1,2,3,4,5,6,7,8]) //returns 5, should return 4.5
+calcMedian(arr: [1,2,3,4,5,6,7,8]) //returns 5, should return 4.5
 
 //better median
-func calcMedian(arr: [Int]) -> Float {
+func calcBetterMedian(arr: [Int]) -> Float {
     let sorted = arr.sorted()
     if sorted.count % 2 == 0 {
         return Float((sorted[(sorted.count / 2)] + sorted[(sorted.count / 2) - 1])) / 2
     }
     return Float(sorted[(sorted.count - 1) / 2])
 }
-calcMedian(arr: [1,2,3,4,5,6,7,8]) //returns 4.5
+calcBetterMedian(arr: [1,2,3,4,5,6,7,8]) //returns 4.5
 
 //average
 func average(arr: [Double]) -> Double {
@@ -248,7 +248,7 @@ func isLowerCase(str: String) -> Bool {
 isLowerCase(str: "I LOVE CHRISTMAS") //false
 isLowerCase(str: "<3 lol") //true
 
-//check that each character is
+//check that each character is uppercase
 func isUpperCase(str: String) -> Bool {
     return str == str.uppercased()
 }

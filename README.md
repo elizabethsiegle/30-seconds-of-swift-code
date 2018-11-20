@@ -1,0 +1,677 @@
+# 30-seconds-of-swift-code [![Tweet](https://jpillora.com/github-twitter-button/img/tweet.png)](http://www.twitter.com/share?text=%2330secondsofcode+30-seconds-of-swift-code+-+Swift+Implementation+of+30+seconds+of+code%0Ahttps://github.com/elizabethsiegle/30-seconds-of-swift-code&url=a")
+[![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](http://www.firsttimersonly.com/)[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) 
+
+## Welcome to 30-seconds-of-swift-code!
+
+>A Swift implementation of 30-seconds-of-code.
+
+**Note**:- This is in no way affiliated with the original [30-seconds-of-code](https://github.com/Chalarangelo/30-seconds-of-code/).
+
+If you've come here from JavaScript land then you should be aware that this project uses `Swift 4`, therefore not all snippets will work as expected on every system. You'll need to check your Swift version by going to `Project` and then following the steps below. 
+<br />
+<br />
+![version](/swiflangversion.png)
+
+If you need help installing the latest stable release of Swift 4 check out [swift.org](https://swift.org/download/#releases). If you run into trouble make sure you check out Stackoverflow. 
+
+This project contains plenty of useful snippets which can help beginners and newcomers quickly ramp-up their skills on Swift 4.
+
+### Table of contents
+### :books: List
+
+<details><summary>View contents</summary> <ul><li><a href = "#bubble-sort"><code>bubbleSort</code></a></li>
+<li><a href = "#filter-bools"><code>filterBools</code></a></li>
+<li><a href = "#chunk"><code>chunk</code></a></li>
+<li><a href = "#count-occurrences"><code>countOccurrences</code></a></li>
+<li><a href = "#deep-flatten"><code>deepFlatten</code></a></li>
+<li><a href = "#difference"><code>difference</code></a></li>
+<li><a href = "#duplicates"><code>duplicates</code></a></li>
+<li><a href = "#insertion-sort"><code>insertionSort</code></a></li>
+<li><a href = "#fisher-yates-shuffle"><code>fisherYatesShuffle</code></a></li>
+<li><a href = "#calc-median"><code>calcMedian</code></a></li>
+<li><a href = "#calc-better-median"><code>calcBetterMedian</code></a></li>
+<li><a href = "#average"><code>average</code></a></li>
+<li><a href = "#factorial"><code>factorial</code></a></li>
+<li><a href = "#gcd"><code>gcd</code></a></li>
+<li><a href = "#lcm1"><code>lcm1</code></a></li>
+<li><a href = "#lcm2"><code>lcm2</code></a></li>
+<li><a href = "#maxn"><code>maxn</code></a></li>
+<li><a href = "#minn"><code>minn</code></a></li>
+<li><a href = "#all-unique"><code>allUnique</code></a></li>
+<li><a href = "#just-keys"><code>justKeys</code></a></li>
+<li><a href = "#just-values"><code>justValues</code></a></li>
+<li><a href = "#capitalize-first"><code>capitalizeFirst</code></a></li>
+<li><a href = "#capitalize-every-word"><code>capitalizeEveryWord</code></a></li>
+<li><a href = "#count-vowels"><code>countVowels</code></a></li>
+<li><a href = "#lower-case-first-letter-of-first-word"><code>lowerCaseFirstLetterOfFirstWord</code></a></li>
+<li><a href = "#is-lower-case"><code>isLowerCase</code></a></li>
+<li><a href = "#is-upper-case"><code>isUpperCase</code></a></li>
+<li><a href = "#palindrome"><code>palindrome</code></a></li>
+<li><a href = "#drop"><code>drop</code></a></li>
+</ul></details>
+
+### :heavy_division_sign: Math
+
+<details><summary>View contents</summary> <ul><li><a href = "#average"><code>average</code></a></li>
+<li><a href = "#gcd"><code>gcd</code></a></li>
+<li><a href = "#lcm1"><code>lcm1</code></a></li>
+<li><a href = "#lcm2"><code>lcm2</code></a></li>
+<li><a href = "#maxnn"><code>maxn</code></a></li>
+<li><a href = "#minnn"><code>minn</code></a></li>
+<li><a href = "#factorial"><code>factorial</code></a></li>
+<li><a href = "#calc-median"><code>calcMedian</code></a></li>
+<li><a href = "#calc-better-median"><code>calcBetterMedian</code></a></li>
+</ul></details>
+
+### :card_file_box: Object
+
+<details><summary>View contents</summary> <ul><li><a href = "#all-unique"><code>allUnique</code></a></li>
+<li><a href = "#just-keys"><code>justKeys</code></a></li>
+<li><a href = "#just-values"><code>justValues</code></a></li>
+</ul></details>
+
+### :scroll: String
+
+<details><summary>View contents</summary> <ul><li><a href = "#capitalize-first"><code>capitalizeFirst</code></a></li>
+<li><a href = "#capitalize-everyword"><code>capitalizeEveryWord</code></a></li>
+<li><a href = "#count-vowels"><code>countVowels</code></a></li>
+<li><a href = "#lower-case-first-letter-of-first-word"><code>lowerCaseFirstLetterOfFirstWord</code></a></li>
+<li><a href = "#is-lower-case"><code>isLowerCase</code></a></li>
+<li><a href = "#is-upper-case"><code>isUpperCase</code></a></li>
+<li><a href = "#palindrome"><code>palindrome</code></a></li>
+</ul></details>
+
+<hr></hr> 
+
+## :books: List
+
+### bubble sort 
+BubbleSort uses the technique of comparing and swapping
+```swift
+func bubbleSort(_ inputArr:[Int]) -> [Int] {
+    guard inputArr.count > 1 else {
+        return inputArr
+    }
+    var res = inputArr
+    let count = res.count
+    var isSwapped = false
+    repeat {
+        isSwapped = false
+        for index in stride(from: 1, to: count, by: 1) {
+            if res[index] < res[index - 1] {
+                res.swapAt((index - 1), index)
+                isSwapped = true
+            }
+        }
+    } while isSwapped
+    return res
+}
+
+```
+<details><summary>View Examples</summary>
+
+```swift
+bubbleSort([32,12,12,23,11,19,81,76]) //[11, 12, 12, 19, 23, 32, 76, 81]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### chunk 
+Chunks an array into smaller arrays of a certain size.
+```swift
+func chunk(arr: [Any], chunkSize: Int) -> [Any] {
+    let chunks = stride(from: 0, to: arr.count, by: chunkSize).map {
+        Array(arr[$0..<min($0 + chunkSize, arr.count)])
+    }
+    return chunks
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+chunk(arr: [2, 4, 6, 8], chunkSize: 1) //[[2], [4], [6], [8]]
+chunk(arr: [1, 3, 5, 9], chunkSize: 4) //[[1, 3, 5, 9]]
+chunk(arr: ["hi", "yo", "bye", "bai"], chunkSize: 3) //[["hi", "yo", "bye"], ["bai"]]
+chunk(arr: ["young", "scrappy", "hungry"], chunkSize: 2) //[["young", "scrappy"], ["hungry"]]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### filter bools
+
+Remove every value that's not a Boolean.
+
+```swift
+func filterBools(_ inputArr: [Any]) -> [Any] {
+    return inputArr.compactMap { $0 as? Bool }
+    
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+filterBools([false, 2, "lol", 3, "a", "s", 34, false, true]) //[false, false, true]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### count occurrences 
+
+Count occurrences of a string in an array
+```swift
+func countOccurrences(arr: [String], into: String) -> Int {
+    return arr.reduce(0) { $1 == into ? $0 + 1 : $0 }
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+countOccurrences(arr: ["FOO", "FOO", "BAR"], into: "FOO") //2
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### deep flatten 
+
+Deep flattens a list.
+
+Use recursion. 
+```swift
+func deepFlatten(arr: [AnyHashable]) -> [AnyHashable] {
+    var arr2 = [AnyHashable]()
+    for el in arr {
+        if let el = el as? Int {
+            arr2.append(el)
+        }
+        if let el = el as? [Any] {
+            let res = deepFlatten(arr: el as! [AnyHashable])
+            for i in res {
+                arr2.append(i)
+            }
+        }
+    }
+    return arr2
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+deepFlatten(arr: [6, 5, 4, [3, 2], [1]]) //[6, 5, 4, 3, 2, 1]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### difference 
+Return element(s) not contained in both of the given arrays (ie. elements only contained in one array and not both.)
+```swift
+func difference(arr1: [AnyHashable], arr2: [AnyHashable]) -> Set<AnyHashable> {
+    return Set(arr1).symmetricDifference(arr2)
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+difference(arr1: [2, 4, 6, 8], arr2: [10, 8, 6, 4, 2, 0]) //10
+difference(arr1: ["mulan", "moana", "belle", "elsa"], arr2: ["mulan", "moana", "belle", "pocahontas"]) //elsa, pocahontas
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### duplicates
+Check for duplicate elements in a given array
+```swift
+func duplicates(arr1: [AnyHashable]) -> Bool {
+    return arr1.count != (Set<AnyHashable>(arr1)).count
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+duplicates(arr1: [5, 4, 3, 2]) //false
+duplicates(arr1: ["hermione", "hermione", "ron", "harry"]) //true
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### insertion sort
+Insertion Sort algorithm--inspired by Ray Wenderlich https://github.com/raywenderlich/swift-algorithm-club/tree/master/Insertion%20Sort
+```swift
+func insertionSort(_ array: [Int]) -> [Int] {
+    var a = array             // 1
+    for index in stride(from: 1, to: a.count, by: 1)  {
+        var y = index
+        while y > 0 && a[y] < a[y - 1] { // 3
+            a.swapAt(y - 1, y)
+            y -= 1
+        }
+    }
+    return a
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+let list = [ 10, -1, 3, 9, 2, 27, 8, 5, 1, 3, 0, 26 ]
+insertionSort(list) //[-1, 0, 1, 2, 3, 3, 5, 8, 9, 10, 26, 27]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### fisher yates shuffle
+[Fisher-Yates algorithm](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) to shuffle an array
+```swift
+func shuffle(arr1: [AnyHashable]) -> [AnyHashable] {
+    var arr2 = arr1
+    for i in stride(from: arr1.count - 1, through: 1, by: -1) {
+        let j = Int.random(in: 0...i)
+        if i != j {
+            arr2.swapAt(i, j)
+        }
+    }
+    return arr2
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+var foo = [1,2,3]
+shuffle(arr1: foo) //[2,3,1] , foo = [1,2,3]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+
+
+## :heavy_division_sign: Math
+
+### average 
+Returns the average of two or more numbers.
+```swift
+func average(arr: [Double]) -> Double {
+    return arr.reduce(0, +)/Double(arr.count)
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+average(arr: [5, 4, 3, 2, 1]) //3
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### factorial 
+Calculates the factorial of a number.
+```swift
+func factorial(num: Int) -> Int {
+    var fact: Int = 1
+    for index in stride(from: 1, to: num+1, by: 1) {
+        fact = fact * index
+    }
+    return fact
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+factorial(num: 4) //24
+factorial(num: 10) //3628800
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### gcd 
+Calculates the greatest common divisor between two integers.
+```swift
+func gcd(num1: Int, num2: Int) -> Int {
+    let mod = num1 % num2
+    if mod != 0 {
+        return gcd(num1: num2, num2: mod)
+    }
+    return num2
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+gcd(num1: 228, num2: 36) //12
+gcd(num1: -5, num2: -10)
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### lcm1
+
+Returns the least common multiple of two integers using `gcd` function above
+
+The GCD formula uses recursion.
+```swift
+func lcm1(num1: Int, num2: Int) -> Int {
+    return abs(num1 * num2) / gcd(num1: num1, num2: num2)
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+lcm1(num1: 12, num2: 7) //84
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### lcm2
+
+Least common multiple of an array using the first lcm
+```swift
+func lcm2(arr1: [Int]) -> Int {
+    return arr1.reduce(1) { lcm1(num1: $0, num2: $1) }
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+lcm2(arr1: [4, 3, 2]) //12
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### max n 
+
+Returns the maximum element from the provided array.
+```swift
+func maxn(arr1: [Int]) -> Int {
+    if let (_, maxValue) = arr1.enumerated().max(by: { $0.element < $1.element }) {
+        return maxValue
+    }
+    return 0
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+maxn(arr1: [2, 9, 5]) //9
+[2, 9, 5].max() //9
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### min n 
+
+Returns the minimum function.
+```swift
+func minn(arr1: [Int]) -> Int {
+    var minVal = arr1[0]
+    for num in arr1 {
+        minVal = (num  < minVal) ? num : minVal
+    }
+    return minVal
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+minn(arr1: [8, 2, 4, 6]) //2
+[8, 2, 4, 6].min() //2
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### calc median
+One way of calculating the median of an array of integers
+```swift
+func calcMedian(arr: [Int]) -> Float {
+    return Float(arr.sorted(by: <)[arr.count / 2])
+}
+```
+<details><summary>View Examples</summary>
+```swift
+calcMedian(arr: [1,2,3,4,5,6,7,8]) //returns 4.5
+```
+</details>
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### calc better median
+Better way of calculating the median of an array of integers
+```swift
+func calcBetterMedian(arr: [Int]) -> Float {
+    let sorted = arr.sorted()
+    if sorted.count % 2 == 0 {
+        return Float((sorted[(sorted.count / 2)] + sorted[(sorted.count / 2) - 1])) / 2
+    }
+    return Float(sorted[(sorted.count - 1) / 2])
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+calcBetterMedian(arr: [1,2,3,4,5,6,7,8]) //returns 4.5
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+## :card_file_box: Object
+
+### all unique 
+
+Checks a flat list for all unique values. Returns True if list values are all unique and False if list values aren't all unique.
+```swift
+func allUnique(arr: [AnyHashable]) -> Bool {
+    return arr.count == Set<AnyHashable>(arr).count
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+allUnique(arr: [5, 4, 3, 2]) //true
+allUnique(arr: ["lol", "rofl", "lol"]) //false
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### just keys
+
+Function which accepts a dictionary of key value pairs and returns a new array of only the keys.
+```swift
+func justKeys(dict: Dictionary<AnyHashable, AnyHashable>) -> [AnyHashable] {
+    return Array(dict.keys)
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+var dict: Dictionary<String, String> = ["Mulan": "Mushu", "Anna": "Olaf", "Pocahontas": "Fleeko"]
+justKeys(dict: dict) //[Anna, Mulan, Pocahontas]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### just values
+
+Function which accepts a dictionary of key-value pairs and returns a new array of only the values.
+```swift
+func justValues(dict: Dictionary<AnyHashable, AnyHashable>) -> [AnyHashable] {
+    return Array(dict.values)
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+justValues(dict: dict) //[Olaf, Mushu, Fleeko]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+## :scroll: String
+
+### capitalize first
+
+Capitalizes the first letter of a string, leaving the rest the same
+```swift
+func capitalizeFirst(str: String) -> String {
+    var components = str.components(separatedBy: " ")
+    components[0] = components[0].capitalized
+    return components.joined(separator: " ")
+}
+```
+<details><summary>View Examples</summary>
+
+```
+capitalizeFirst(str: "i like cheesE") //I like cheesE
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### capitalize every word 
+Capitalizes the first letter of every word in a string.
+```swift
+func capitalizeEveryWord(str: String) -> String {
+    return str.capitalized
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+capitalizeEveryWord(str: "on a scale from 1 to 10 how would you rate your pain")
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### count vowels 
+Retuns `number` of vowels in provided `string`.
+```swift
+func countVowels(str: String) -> Int {
+    var vowelCount = 0
+    let vowels = Set(["a", "e", "i", "o", "u"])
+    for char in str.lowercased() {
+        if vowels.contains("\(char)") {
+            vowelCount += 1
+        }
+    }
+    return vowelCount
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+countVowels(str: "hi mom") //2
+countVowels(str: "aeiou") //5
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### lower case first letter of first word
+
+Decapitalizes the first letter of the first word in a string
+```swift
+func lowerCaseFirstLetterOfFirstWord(str: String) -> String {
+    var components = str.components(separatedBy: " ")
+    components[0] = components[0].lowercased()
+    return components.joined(separator: " ")
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+lowerCaseFirstLetterOfFirstWord(str: "Christmas Switch was a solid movie") //christmas Switch...
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### is lower case 
+Return true if any character in a string is capitalized
+
+```swift
+func isLowerCase(str: String) -> Bool {
+    return str == str.lowercased()
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+isLowerCase(str: "I LOVE CHRISTMAS") //false
+isLowerCase(str: "<3 lol") //true
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### is upper case 
+Checks that each character is uppercase
+
+```swift
+func isUpperCase(str: String) -> Bool {
+    return str == str.uppercased()
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+isUpperCase(str: "LOLOLOL") //true
+isUpperCase(str: "lmao") //false
+isUpperCase(str: "Rofl") //false
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### palindrome 
+Returns `True` if the given string is a palindrome, `False` otherwise.
+```swift
+func palindrome(str: String) -> Bool {
+    return str.lowercased() == String(str.reversed()).lowercased()
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+palindrome(str: "racecar") //true
+palindrome(str: "Madam") //true
+palindrome(str: "lizzie") //false
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### drop 
+Returns a new array with n elements removed from the left.
+```swift
+func drop(arr: [AnyHashable], num: Int) -> [AnyHashable] {
+    return Array(arr.dropFirst(num)) //need Array() to concert ArraySlice to Array
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+drop(arr: [5, 4, 3, 2, 1, 0], num: 1)
+drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+## Credits
+
+*Icons made by [Smashicons](https://www.flaticon.com/authors/smashicons) from [www.flaticon.com](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/).*
+
