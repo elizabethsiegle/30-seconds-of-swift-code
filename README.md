@@ -3,7 +3,8 @@
 
 ## Welcome to 30-seconds-of-swift-code!
 
->A Swift implementation of 30-seconds-of-code.
+>A Swift implementation of 30-seconds-of-code: A curated collection of useful Swift 4 snippets that you can understand in 30 seconds or less.
+* Use <kbd>Ctrl</kbd> + <kbd>F</kbd> or <kbd>command</kbd> + <kbd>F</kbd> to search for a snippet.
 
 **Note**:- This is in no way affiliated with the original [30-seconds-of-code](https://github.com/Chalarangelo/30-seconds-of-code/).
 
