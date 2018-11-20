@@ -87,7 +87,7 @@ This project contains plenty of useful snippets which can help beginners and new
 ## :books: List
 
 ### bubble sort 
-BubbleSort uses the technique of comparing and swapping
+BubbleSort is a sorting algorithm that uses the technique of repeatedly comparing and swapping the adjacent elements if they are in the wrong order.
 ```swift
 func bubbleSort(_ inputArr:[Int]) -> [Int] {
     guard inputArr.count > 1 else {
@@ -161,7 +161,7 @@ filterBools([false, 2, "lol", 3, "a", "s", 34, false, true]) //[false, false, tr
 
 ### count occurrences 
 
-Count occurrences of a string in an array
+Count occurrences of a string in an array.
 ```swift
 func countOccurrences(arr: [String], into: String) -> Int {
     return arr.reduce(0) { $1 == into ? $0 + 1 : $0 }
@@ -178,9 +178,7 @@ countOccurrences(arr: ["FOO", "FOO", "BAR"], into: "FOO") //2
 
 ### deep flatten 
 
-Deep flattens a list.
-
-Use recursion. 
+Deep flattens a list with recursion. 
 ```swift
 func deepFlatten(arr: [AnyHashable]) -> [AnyHashable] {
     var arr2 = [AnyHashable]()
@@ -225,7 +223,7 @@ difference(arr1: ["mulan", "moana", "belle", "elsa"], arr2: ["mulan", "moana", "
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### duplicates
-Check for duplicate elements in a given array
+Check for duplicate elements in a given array.
 ```swift
 func duplicates(arr1: [AnyHashable]) -> Bool {
     return arr1.count != (Set<AnyHashable>(arr1)).count
@@ -242,7 +240,7 @@ duplicates(arr1: ["hermione", "hermione", "ron", "harry"]) //true
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### insertion sort
-Insertion Sort algorithm--inspired by Ray Wenderlich https://github.com/raywenderlich/swift-algorithm-club/tree/master/Insertion%20Sort
+Insertion Sort algorithm--inspired by Ray Wenderlich https://github.com/raywenderlich/swift-algorithm-club/tree/master/Insertion%20Sort.
 ```swift
 func insertionSort(_ array: [Int]) -> [Int] {
     var a = array             // 1
@@ -267,7 +265,7 @@ insertionSort(list) //[-1, 0, 1, 2, 3, 3, 5, 8, 9, 10, 26, 27]
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### fisher yates shuffle
-[Fisher-Yates algorithm](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) to shuffle an array
+[Fisher-Yates algorithm](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) aka Knuth shuffle to shuffle an array creates a uniform shuffle of the array where each permutation is equally likely in O(n) time.
 ```swift
 func shuffle(arr1: [AnyHashable]) -> [AnyHashable] {
     var arr2 = arr1
@@ -295,7 +293,7 @@ shuffle(arr1: foo) //[2,3,1] , foo = [1,2,3]
 ## :heavy_division_sign: Math
 
 ### average 
-Returns the average of two or more numbers.
+Returns the average of two or more doubles in an array.
 ```swift
 func average(arr: [Double]) -> Double {
     return arr.reduce(0, +)/Double(arr.count)
@@ -332,7 +330,7 @@ factorial(num: 10) //3628800
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### gcd 
-Calculates the greatest common divisor between two integers.
+Calculates the greatest common divisor between two integers with recursion.
 ```swift
 func gcd(num1: Int, num2: Int) -> Int {
     let mod = num1 % num2
@@ -353,10 +351,7 @@ gcd(num1: -5, num2: -10)
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### lcm1
-
-Returns the least common multiple of two integers using `gcd` function above
-
-The GCD formula uses recursion.
+Returns the least common multiple of two integers using the `gcd` function above.
 ```swift
 func lcm1(num1: Int, num2: Int) -> Int {
     return abs(num1 * num2) / gcd(num1: num1, num2: num2)
@@ -372,8 +367,7 @@ lcm1(num1: 12, num2: 7) //84
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### lcm2
-
-Least common multiple of an array using the first lcm
+Least common multiple of an array using the first lcm.
 ```swift
 func lcm2(arr1: [Int]) -> Int {
     return arr1.reduce(1) { lcm1(num1: $0, num2: $1) }
@@ -389,7 +383,6 @@ lcm2(arr1: [4, 3, 2]) //12
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### max n 
-
 Returns the maximum element from the provided array.
 ```swift
 func maxn(arr1: [Int]) -> Int {
@@ -410,8 +403,7 @@ maxn(arr1: [2, 9, 5]) //9
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### min n 
-
-Returns the minimum function.
+Returns the minimum integer from an array without the built-in `.min()` function (used in examples to compare results.)
 ```swift
 func minn(arr1: [Int]) -> Int {
     var minVal = arr1[0]
@@ -432,7 +424,7 @@ minn(arr1: [8, 2, 4, 6]) //2
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### calc median
-One way of calculating the median of an array of integers
+One way of calculating the median of an array of integers.
 ```swift
 func calcMedian(arr: [Int]) -> Float {
     return Float(arr.sorted(by: <)[arr.count / 2])
@@ -446,7 +438,7 @@ calcMedian(arr: [1,2,3,4,5,6,7,8]) //returns 4.5
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### calc better median
-Better way of calculating the median of an array of integers
+Better way of calculating the median of an array of integers.
 ```swift
 func calcBetterMedian(arr: [Int]) -> Float {
     let sorted = arr.sorted()
@@ -469,7 +461,7 @@ calcBetterMedian(arr: [1,2,3,4,5,6,7,8]) //returns 4.5
 
 ### all unique 
 
-Checks a flat list for all unique values. Returns True if list values are all unique and False if list values aren't all unique.
+Checks a flat list for all unique values, returning True if list values are all unique and False if list values aren't all unique.
 ```swift
 func allUnique(arr: [AnyHashable]) -> Bool {
     return arr.count == Set<AnyHashable>(arr).count
@@ -486,8 +478,7 @@ allUnique(arr: ["lol", "rofl", "lol"]) //false
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### just keys
-
-Function which accepts a dictionary of key value pairs and returns a new array of only the keys.
+Function which accepts a dictionary of key-value pairs and returns a new array of just the keys.
 ```swift
 func justKeys(dict: Dictionary<AnyHashable, AnyHashable>) -> [AnyHashable] {
     return Array(dict.keys)
@@ -504,8 +495,7 @@ justKeys(dict: dict) //[Anna, Mulan, Pocahontas]
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### just values
-
-Function which accepts a dictionary of key-value pairs and returns a new array of only the values.
+Function which accepts a dictionary of key-value pairs and returns a new array of just the values.
 ```swift
 func justValues(dict: Dictionary<AnyHashable, AnyHashable>) -> [AnyHashable] {
     return Array(dict.values)
@@ -523,8 +513,7 @@ justValues(dict: dict) //[Olaf, Mushu, Fleeko]
 ## :scroll: String
 
 ### capitalize first
-
-Capitalizes the first letter of a string, leaving the rest the same
+Capitalizes the first letter of a string, leaving the rest the same.
 ```swift
 func capitalizeFirst(str: String) -> String {
     var components = str.components(separatedBy: " ")
@@ -582,8 +571,7 @@ countVowels(str: "aeiou") //5
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### lower case first letter of first word
-
-Decapitalizes the first letter of the first word in a string
+Decapitalizes the first letter of the first word in a string.
 ```swift
 func lowerCaseFirstLetterOfFirstWord(str: String) -> String {
     var components = str.components(separatedBy: " ")
@@ -601,7 +589,7 @@ lowerCaseFirstLetterOfFirstWord(str: "Christmas Switch was a solid movie") //chr
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### is lower case 
-Return true if any character in a string is capitalized
+Return true if any character in a string is capitalized.
 
 ```swift
 func isLowerCase(str: String) -> Bool {
@@ -619,7 +607,7 @@ isLowerCase(str: "<3 lol") //true
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### is upper case 
-Checks that each character is uppercase
+Checks that each character in a string is uppercase.
 
 ```swift
 func isUpperCase(str: String) -> Bool {
@@ -638,7 +626,7 @@ isUpperCase(str: "Rofl") //false
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### palindrome 
-Returns `True` if the given string is a palindrome, `False` otherwise.
+Returns `True` if the given string is a palindrome, `False` if otherwise.
 ```swift
 func palindrome(str: String) -> Bool {
     return str.lowercased() == String(str.reversed()).lowercased()
@@ -672,7 +660,7 @@ drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
-## Credits
+## Contributors
 
-*Icons made by [Smashicons](https://www.flaticon.com/authors/smashicons) from [www.flaticon.com](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/).*
+[//]: #*
 
