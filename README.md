@@ -540,7 +540,7 @@ func capitalizeEveryWord(str: String) -> String {
 <details><summary>View Examples</summary>
 
 ```swift
-capitalizeEveryWord(str: "on a scale from 1 to 10 how would you rate your pain")
+capitalizeEveryWord(str: "on a scale from 1 to 10 how would you rate your pain") //On A Scale From...
 ```
 </details>
 
