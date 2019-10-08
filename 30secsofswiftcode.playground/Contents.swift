@@ -270,3 +270,20 @@ func drop(arr: [AnyHashable], num: Int) -> [AnyHashable] {
 }
 drop(arr: [5, 4, 3, 2, 1, 0], num: 1)
 drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
+
+// Returns the given string in snake case
+func snakeCased(str: String) -> String? {
+    let pattern = "([a-z0-9])([A-Z])"
+
+    let regex = try? NSRegularExpression(pattern: pattern, options: [])
+    let range = NSRange(location: 0, length: str.count)
+    // Insert "_" between uppercase and lowercase characters
+    return regex?.stringByReplacingMatches(in: str, options: [], range: range, withTemplate: "$1_$2")
+        .lowercased() // lower case all characters
+        .replacingOccurrences(of: " ", with: "_") // replace whitespaces
+        .replacingOccurrences(of: "-", with: "_") // replace hyphen
+}
+snakeCased(str: "camelCase") // 'camel_case'
+snakeCased(str:"some text") // 'some_text'
+snakeCased(str:"some-mixed_string With spaces_underscores-and-hyphens") // 'some_mixed_string_with_spaces_underscores_and_hyphens'
+snakeCased(str:"AllThe-small Things") // "all_the_smal_things"
