@@ -270,3 +270,10 @@ func drop(arr: [AnyHashable], num: Int) -> [AnyHashable] {
 }
 drop(arr: [5, 4, 3, 2, 1, 0], num: 1)
 drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
+
+// Convert an angle from radians to degrees
+func radiansToDegrees(_ angle: Double) -> Double {
+    return angle * 180 / .pi
+}
+
+radiansToDegrees(4) // 229.183
