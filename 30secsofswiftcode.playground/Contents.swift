@@ -280,3 +280,17 @@ func arrayToCSV(_ inputArray: [Array<String>]) -> String {
 }
 arrayToCSV([["a", "b", "c"], ["d", "e", "f"], ["g", "h", "i"]])
 
+// flips arguments of a given function
+func flip<A, B, C>(_ function: @escaping ((A, B) -> C)) -> ((B, A)->C) {
+    return { (a, b) in
+        return function(b, a)
+    }
+}
+
+func testFunction(_ alpha: String, _ beta: String) -> String {
+    return alpha + beta
+}
+
+var flipped = flip(testFunction)
+testFunction("A", "B")
+flipped("A", "B")
