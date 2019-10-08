@@ -737,6 +737,49 @@ everyNth(list: ["a", "b", "c", "d", "e", "f"], n: 3) // [ "c", "f" ]
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
+### is sorted
+Returns 1 if array is sorted in ascending order, -1 if descending order, and 0 if unsorted
+```swift
+func isSorted(arr: [Int]) -> Int {
+    var asc: Bool = true
+    var prev: Int = Int.min
+    for elem in arr {
+        if elem < prev {
+            asc = false
+            break
+        }
+        prev = elem
+    }
+    if asc {
+        return 1
+    }
+    var dsc: Bool = true
+    prev = Int.max
+    for elem in arr {
+        if elem > prev {
+            dsc = false
+            break
+        }
+        prev = elem
+    }
+    if dsc {
+        return -1
+    }
+
+    return 0
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+isSorted(arr: [1, 2, 2, 4, 8]) // 1
+isSorted(arr: [8, 4, 4, 2, 1]) // -1
+isSorted(arr: [1, 4, 2, 8, 4]) // 0
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
 ## Contributors
 
 [//]: #* 
@@ -750,4 +793,4 @@ everyNth(list: ["a", "b", "c", "d", "e", "f"], n: 3) // [ "c", "f" ]
 
 [Viktor Sokolov](https://github.com/BNTR)
 
-
+[Sai Sandeep Mutyala](https://github.com/heliostrike)
