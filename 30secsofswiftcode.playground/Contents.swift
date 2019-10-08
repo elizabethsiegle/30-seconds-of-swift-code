@@ -270,3 +270,13 @@ func drop(arr: [AnyHashable], num: Int) -> [AnyHashable] {
 }
 drop(arr: [5, 4, 3, 2, 1, 0], num: 1)
 drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
+
+func arrayToCSV(_ inputArray: [Array<String>]) -> String {
+    var csv: String = ""
+    for row in inputArray {
+        csv.append(row.map { "\"\($0)\"" } .joined(separator: ", ") + "\n")
+    }
+    return csv
+}
+arrayToCSV([["a", "b", "c"], ["d", "e", "f"], ["g", "h", "i"]])
+
