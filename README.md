@@ -49,6 +49,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#is-upper-case"><code>isUpperCase</code></a></li>
 <li><a href = "#palindrome"><code>palindrome</code></a></li>
 <li><a href = "#drop"><code>drop</code></a></li>
+<li><a href = "#nth-element"><code>nthElement</code></a></li>
 <li><a href = "#filter-non-unique"><code>filterNonUnique</code></a></li>
 </ul></details>
 
@@ -704,7 +705,29 @@ snake(str: "AllThe-small Things") // "all_the_smal_things"
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
+### nth element
+Returns every nth element from given list.
+```swift
+func everyNth(list: [Any], n: Int) -> [Any] {
+    return list.enumerated().compactMap({ ($0.offset + 1) % n == 0 ? $0.element : nil })
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+everyNth(list: [1, 2, 3, 4, 5, 6], n: 2) // [ 2, 4, 6 ]
+everyNth(list: ["a", "b", "c", "d", "e", "f"], n: 3) // [ "c", "f" ]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
 ## Contributors
 
-[//]: #*
+[//]: #* 
+[Lizzie Siegle](https://github.com/elizabethsiegle)
+[Abdulhakim Ajetunmobi](https://github.com/abdulajet)
+[Hatos Barbosa](https://github.com/hatosbarbosa)
+[Paul Schroder](https://github.com/phjs)
+
 

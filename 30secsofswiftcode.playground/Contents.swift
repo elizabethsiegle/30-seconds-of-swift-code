@@ -271,6 +271,13 @@ func drop(arr: [AnyHashable], num: Int) -> [AnyHashable] {
 drop(arr: [5, 4, 3, 2, 1, 0], num: 1)
 drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
 
+// Returns every nth element from given list.
+func everyNth(list: [Any], n: Int) -> [Any] {
+    return list.enumerated().compactMap({ ($0.offset + 1) % n == 0 ? $0.element : nil })
+}
+everyNth(list: [1, 2, 3, 4, 5, 6], n: 2) // [ 2, 4, 6 ]
+everyNth(list: ["a", "b", "c", "d", "e", "f"], n: 3) // [ "c", "f" ]
+
 // Returns the given string in snake case.
 // based on dmsl1805 https://gist.github.com/dmsl1805/ad9a14b127d0409cf9621dc13d237457
 func snake(str: String) -> String? {
