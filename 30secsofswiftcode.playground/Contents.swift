@@ -270,3 +270,35 @@ func drop(arr: [AnyHashable], num: Int) -> [AnyHashable] {
 }
 drop(arr: [5, 4, 3, 2, 1, 0], num: 1)
 drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
+
+
+//Remove falsey values from an array, values like 0, "", nil and false.
+func removeFalseyValues(arr: [Any?]) -> [Any?] {
+    return arr.filter({ (value) -> Bool in
+        if let strValue = value as? String, strValue == "" {
+            return false
+        }
+        else if let intValue = value as? Int, intValue == 0 {
+            return false
+        }
+        else if let boolValue = value as? Bool, boolValue == false {
+            return false
+        }
+        else if value == nil {
+            return false
+        }
+        else {
+            return true
+        }
+    })
+}
+
+var testIntArray = [1,2,3,5,0,1,4]
+var newIntArray = removeFalseyValues(arr: testIntArray)
+var testStrArray = ["","i","","love","","swift"]
+var newStrArray = removeFalseyValues(arr: testStrArray)
+var testBoolAndNilArray = [true,true,false,true,nil,true]
+var testBoolArray = removeFalseyValues(arr: testBoolAndNilArray)
+
+
+
