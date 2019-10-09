@@ -284,6 +284,6 @@ func snakeCased(str: String) -> String? {
         .replacingOccurrences(of: "-", with: "_") // replace hyphen
 }
 snakeCased(str: "camelCase") // 'camel_case'
-snakeCased(str:"some text") // 'some_text'
-snakeCased(str:"some-mixed_string With spaces_underscores-and-hyphens") // 'some_mixed_string_with_spaces_underscores_and_hyphens'
-snakeCased(str:"AllThe-small Things") // "all_the_smal_things"
+snakeCased(str: "some text") // 'some_text'
+snakeCased(str: "some-mixed_string With spaces_underscores-and-hyphens") // 'some_mixed_string_with_spaces_underscores_and_hyphens'
+snakeCased(str: "AllThe-small Things") // "all_the_smal_things"
