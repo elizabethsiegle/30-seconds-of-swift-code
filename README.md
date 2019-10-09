@@ -81,6 +81,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#is-lower-case"><code>isLowerCase</code></a></li>
 <li><a href = "#is-upper-case"><code>isUpperCase</code></a></li>
 <li><a href = "#palindrome"><code>palindrome</code></a></li>
+<li><a href = "#snake"><code>snake</code></a></li>
 </ul></details>
 
 <hr></hr> 
@@ -672,6 +673,32 @@ func filterNonUnique(arr: [Any]) -> [Any] {
 ```swift
 filterNonUnique(arr: [1, 2, 2, 3, 5]) // [1, 2, 3, 5]
 filterNonUnique(arr: ["Tim", "Steve", "Tim", "Jony", "Phil"]) // ["Tim", "Steve", "Jony", "Phil"]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### snake
+Returns a new string in snake case
+```swift
+func snake(str: String) -> String? {
+    let pattern = "([a-z0-9])([A-Z])"
+
+    let regex = try? NSRegularExpression(pattern: pattern, options: [])
+    let range = NSRange(location: 0, length: str.count)
+    return regex?.stringByReplacingMatches(in: str, options: [], range: range, withTemplate: "$1_$2")
+        .lowercased() 
+        .replacingOccurrences(of: " ", with: "_")
+        .replacingOccurrences(of: "-", with: "_")
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+snake(str: "camelCase") // 'camel_case'
+snake(str: "some text") // 'some_text'
+snake(str: "some-mixed_string With spaces_underscores-and-hyphens") // 'some_mixed_string_with_spaces_underscores_and_hyphens'
+snake(str: "AllThe-small Things") // "all_the_smal_things"
 ```
 </details>
 
