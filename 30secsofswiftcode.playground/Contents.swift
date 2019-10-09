@@ -278,3 +278,31 @@ func filterNonUnique(arr: [Any]) -> [Any] {
 }
 filterNonUnique(arr: [1, 2, 2, 3, 5])
 filterNonUnique(arr: ["Tim", "Steve", "Tim", "Jony", "Phil"])
+
+//Remove falsey values from an array, values like 0, "", nil and false.
+func removeFalseyValues(arr: [Any?]) -> [Any?] {
+    return arr.filter({ (value) -> Bool in
+        if let strValue = value as? String, strValue == "" {
+            return false
+        }
+        else if let intValue = value as? Int, intValue == 0 {
+            return false
+        }
+        else if let boolValue = value as? Bool, boolValue == false {
+            return false
+        }
+        else if value == nil {
+            return false
+        }
+        else {
+            return true
+        }
+    })
+}
+
+var testIntArray = [1,2,3,5,0,1,4]
+var newIntArray = removeFalseyValues(arr: testIntArray)
+var testStrArray = ["","i","","love","","swift"]
+var newStrArray = removeFalseyValues(arr: testStrArray)
+var testBoolAndNilArray = [true,true,false,true,nil,true]
+var testBoolArray = removeFalseyValues(arr: testBoolAndNilArray)
