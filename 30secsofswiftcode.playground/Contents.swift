@@ -271,6 +271,13 @@ func drop(arr: [AnyHashable], num: Int) -> [AnyHashable] {
 drop(arr: [5, 4, 3, 2, 1, 0], num: 1)
 drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
 
+// Filters out the non-unique values in a list
+func filterNonUnique(arr: [Any]) -> [Any] {
+    let set = NSOrderedSet(array: arr)
+    return set.array
+}
+filterNonUnique(arr: [1, 2, 2, 3, 5])
+filterNonUnique(arr: ["Tim", "Steve", "Tim", "Jony", "Phil"])
 
 //Remove falsey values from an array, values like 0, "", nil and false.
 func removeFalseyValues(arr: [Any?]) -> [Any?] {
@@ -299,6 +306,3 @@ var testStrArray = ["","i","","love","","swift"]
 var newStrArray = removeFalseyValues(arr: testStrArray)
 var testBoolAndNilArray = [true,true,false,true,nil,true]
 var testBoolArray = removeFalseyValues(arr: testBoolAndNilArray)
-
-
-
