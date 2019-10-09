@@ -49,6 +49,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#is-upper-case"><code>isUpperCase</code></a></li>
 <li><a href = "#palindrome"><code>palindrome</code></a></li>
 <li><a href = "#drop"><code>drop</code></a></li>
+<li><a href = "#drop-right-while"><code>dropRightWhile</code></a></li>
 </ul></details>
 
 ### :heavy_division_sign: Math
