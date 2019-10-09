@@ -279,18 +279,34 @@ func arrayToCSV(_ inputArray: [Array<String>]) -> String {
     return csv
 }
 arrayToCSV([["a", "b", "c"], ["d", "e", "f"], ["g", "h", "i"]])
+//"a", "b", "c"
+//"d", "e", "f"
+//"g", "h", "i"
 
-// flips arguments of a given function
+// returns the same function with fliped arguments
 func flip<A, B, C>(_ function: @escaping ((A, B) -> C)) -> ((B, A)->C) {
     return { (a, b) in
         return function(b, a)
     }
 }
 
-func testFunction(_ alpha: String, _ beta: String) -> String {
+// flip example 1
+func concat(_ alpha: String, _ beta: String) -> String {
     return alpha + beta
 }
 
-var flipped = flip(testFunction)
-testFunction("A", "B")
-flipped("A", "B")
+let reverseConcat = flip(concat)
+concat("A", "B") //"AB"
+reverseConcat("A", "B") //"BA"
+
+// flip example 2
+func gt(_ a: Int, _ b: Int) -> Bool {
+    return a > b
+}
+
+let lt = flip(gt)
+
+gt(5, 3) //true
+lt(5, 3) //false
+gt(2, 5) //false
+lt(2, 5) //true
