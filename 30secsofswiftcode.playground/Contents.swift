@@ -277,3 +277,64 @@ func radiansToDegrees(_ angle: Double) -> Double {
 }
 
 radiansToDegrees(4) // 229.183
+
+// Returns every nth element from given list.
+func everyNth(list: [Any], n: Int) -> [Any] {
+    return list.enumerated().compactMap({ ($0.offset + 1) % n == 0 ? $0.element : nil })
+}
+everyNth(list: [1, 2, 3, 4, 5, 6], n: 2) // [ 2, 4, 6 ]
+everyNth(list: ["a", "b", "c", "d", "e", "f"], n: 3) // [ "c", "f" ]
+
+// Returns the given string in snake case.
+// based on dmsl1805 https://gist.github.com/dmsl1805/ad9a14b127d0409cf9621dc13d237457
+func snake(str: String) -> String? {
+    let pattern = "([a-z0-9])([A-Z])"
+
+    let regex = try? NSRegularExpression(pattern: pattern, options: [])
+    let range = NSRange(location: 0, length: str.count)
+    // Insert "_" between uppercase and lowercase characters
+    return regex?.stringByReplacingMatches(in: str, options: [], range: range, withTemplate: "$1_$2")
+        .lowercased() // lower case all characters
+        .replacingOccurrences(of: " ", with: "_") // replace whitespaces
+        .replacingOccurrences(of: "-", with: "_") // replace hyphen
+}
+snake(str: "camelCase") // 'camel_case'
+snake(str: "some text") // 'some_text'
+snake(str: "some-mixed_string With spaces_underscores-and-hyphens") // 'some_mixed_string_with_spaces_underscores_and_hyphens'
+snake(str: "AllThe-small Things") // "all_the_smal_things"
+
+// Filters out the non-unique values in a list
+func filterNonUnique(arr: [Any]) -> [Any] {
+    let set = NSOrderedSet(array: arr)
+    return set.array
+}
+filterNonUnique(arr: [1, 2, 2, 3, 5])
+filterNonUnique(arr: ["Tim", "Steve", "Tim", "Jony", "Phil"])
+
+//Remove falsey values from an array, values like 0, "", nil and false.
+func removeFalseyValues(arr: [Any?]) -> [Any?] {
+    return arr.filter({ (value) -> Bool in
+        if let strValue = value as? String, strValue == "" {
+            return false
+        }
+        else if let intValue = value as? Int, intValue == 0 {
+            return false
+        }
+        else if let boolValue = value as? Bool, boolValue == false {
+            return false
+        }
+        else if value == nil {
+            return false
+        }
+        else {
+            return true
+        }
+    })
+}
+
+var testIntArray = [1,2,3,5,0,1,4]
+var newIntArray = removeFalseyValues(arr: testIntArray)
+var testStrArray = ["","i","","love","","swift"]
+var newStrArray = removeFalseyValues(arr: testStrArray)
+var testBoolAndNilArray = [true,true,false,true,nil,true]
+var testBoolArray = removeFalseyValues(arr: testBoolAndNilArray)
