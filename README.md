@@ -49,6 +49,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#is-upper-case"><code>isUpperCase</code></a></li>
 <li><a href = "#palindrome"><code>palindrome</code></a></li>
 <li><a href = "#drop"><code>drop</code></a></li>
+<li><a href = "#snake"><code>snakeCase</code></a></li>
 </ul></details>
 
 ### :heavy_division_sign: Math
@@ -655,6 +656,32 @@ func drop(arr: [AnyHashable], num: Int) -> [AnyHashable] {
 ```swift
 drop(arr: [5, 4, 3, 2, 1, 0], num: 1)
 drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### snakeCase
+Returns a new string in snake case
+```swift
+func snakeCased(str: String) -> String? {
+    let pattern = "([a-z0-9])([A-Z])"
+
+    let regex = try? NSRegularExpression(pattern: pattern, options: [])
+    let range = NSRange(location: 0, length: str.count)
+    return regex?.stringByReplacingMatches(in: str, options: [], range: range, withTemplate: "$1_$2")
+        .lowercased() 
+        .replacingOccurrences(of: " ", with: "_")
+        .replacingOccurrences(of: "-", with: "_")
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+snakeCased(str: "camelCase") // 'camel_case'
+snakeCased(str: "some text") // 'some_text'
+snakeCased(str: "some-mixed_string With spaces_underscores-and-hyphens") // 'some_mixed_string_with_spaces_underscores_and_hyphens'
+snakeCased(str: "AllThe-small Things") // "all_the_smal_things"
 ```
 </details>
 
