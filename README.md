@@ -741,8 +741,13 @@ everyNth(list: ["a", "b", "c", "d", "e", "f"], n: 3) // [ "c", "f" ]
 
 [//]: #* 
 [Lizzie Siegle](https://github.com/elizabethsiegle)
+
 [Abdulhakim Ajetunmobi](https://github.com/abdulajet)
+
 [Hatos Barbosa](https://github.com/hatosbarbosa)
+
 [Paul Schroder](https://github.com/phjs)
+
+[Viktor Sokolov](https://github.com/BNTR)
 
 
