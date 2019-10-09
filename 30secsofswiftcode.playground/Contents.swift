@@ -288,3 +288,39 @@ snake(str: "camelCase") // 'camel_case'
 snake(str: "some text") // 'some_text'
 snake(str: "some-mixed_string With spaces_underscores-and-hyphens") // 'some_mixed_string_with_spaces_underscores_and_hyphens'
 snake(str: "AllThe-small Things") // "all_the_smal_things"
+
+// Filters out the non-unique values in a list
+func filterNonUnique(arr: [Any]) -> [Any] {
+    let set = NSOrderedSet(array: arr)
+    return set.array
+}
+filterNonUnique(arr: [1, 2, 2, 3, 5])
+filterNonUnique(arr: ["Tim", "Steve", "Tim", "Jony", "Phil"])
+
+//Remove falsey values from an array, values like 0, "", nil and false.
+func removeFalseyValues(arr: [Any?]) -> [Any?] {
+    return arr.filter({ (value) -> Bool in
+        if let strValue = value as? String, strValue == "" {
+            return false
+        }
+        else if let intValue = value as? Int, intValue == 0 {
+            return false
+        }
+        else if let boolValue = value as? Bool, boolValue == false {
+            return false
+        }
+        else if value == nil {
+            return false
+        }
+        else {
+            return true
+        }
+    })
+}
+
+var testIntArray = [1,2,3,5,0,1,4]
+var newIntArray = removeFalseyValues(arr: testIntArray)
+var testStrArray = ["","i","","love","","swift"]
+var newStrArray = removeFalseyValues(arr: testStrArray)
+var testBoolAndNilArray = [true,true,false,true,nil,true]
+var testBoolArray = removeFalseyValues(arr: testBoolAndNilArray)

@@ -49,6 +49,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#is-upper-case"><code>isUpperCase</code></a></li>
 <li><a href = "#palindrome"><code>palindrome</code></a></li>
 <li><a href = "#drop"><code>drop</code></a></li>
+<li><a href = "#filter-non-unique"><code>filterNonUnique</code></a></li>
 </ul></details>
 
 ### :heavy_division_sign: Math
@@ -656,6 +657,22 @@ func drop(arr: [AnyHashable], num: Int) -> [AnyHashable] {
 ```swift
 drop(arr: [5, 4, 3, 2, 1, 0], num: 1)
 drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
+```
+</details>
+
+### filter non unique 
+Filters out the non-unique values in a list
+```swift
+func filterNonUnique(arr: [Any]) -> [Any] {
+    let set = NSOrderedSet(array: arr)
+    return set.array
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+filterNonUnique(arr: [1, 2, 2, 3, 5]) // [1, 2, 3, 5]
+filterNonUnique(arr: ["Tim", "Steve", "Tim", "Jony", "Phil"]) // ["Tim", "Steve", "Jony", "Phil"]
 ```
 </details>
 
