@@ -660,6 +660,28 @@ drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
+### dropRightWhile
+Removes elements from the end of an array until the passed function returns true.
+```swift
+func dropRight(arr: [Int], while predicate: ((Int) -> Bool)) -> [Int] {
+    var returnArr = arr
+    for item in arr.reversed() {
+        if predicate(item) { break }
+        returnArr = returnArr.dropLast()
+    }
+    return returnArr
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+dropRight(arr: [1, 2, 3, 4, 5], while: { $0 < 0 }) //[]
+dropRight(arr: [1, 2, 3, 4, 5], while: { $0 > 0 }) //[1, 2, 3, 4, 5]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
 ## Contributors
 
 [//]: #*
