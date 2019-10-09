@@ -64,6 +64,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#factorial"><code>factorial</code></a></li>
 <li><a href = "#calc-median"><code>calcMedian</code></a></li>
 <li><a href = "#calc-better-median"><code>calcBetterMedian</code></a></li>
+<li><a href = "#radians-to-degrees"><code>radiansToDegrees</code></a></li>
 </ul></details>
 
 ### :card_file_box: Object
@@ -458,6 +459,20 @@ calcBetterMedian(arr: [1,2,3,4,5,6,7,8]) //returns 4.5
 ```
 </details>
 
+### radians to degrees
+Convert an angle from radians to degrees.
+```swift
+func radiansToDegrees(_ angle: Double) -> Double {
+    return angle * 180 / .pi
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+radiansToDegrees(4) // 229.183
+```
+</details>
+
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ## :card_file_box: Object
@@ -726,8 +741,13 @@ everyNth(list: ["a", "b", "c", "d", "e", "f"], n: 3) // [ "c", "f" ]
 
 [//]: #* 
 [Lizzie Siegle](https://github.com/elizabethsiegle)
+
 [Abdulhakim Ajetunmobi](https://github.com/abdulajet)
+
 [Hatos Barbosa](https://github.com/hatosbarbosa)
+
 [Paul Schroder](https://github.com/phjs)
+
+[Viktor Sokolov](https://github.com/BNTR)
 
 
