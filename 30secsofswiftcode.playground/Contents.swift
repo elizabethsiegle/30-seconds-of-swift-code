@@ -268,5 +268,8 @@ palindrome(str: "lizzie") //false
 func drop(arr: [AnyHashable], num: Int) -> [AnyHashable] {
     return Array(arr.dropFirst(num)) //need Array() to concert ArraySlice to Array
 }
-drop(arr: [5, 4, 3, 2, 1, 0], num: 1)
-drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
+
+//Returns a new array with n elements removed from the right.
+func dropLeft(arr: [AnyHashable], num: Int) -> [AnyHashable] {
+    return Array(arr.dropLast(num))
+}
