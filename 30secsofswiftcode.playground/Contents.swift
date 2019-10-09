@@ -272,6 +272,7 @@ drop(arr: [5, 4, 3, 2, 1, 0], num: 1)
 drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
 
 // Returns the given string in snake case
+// based on dmsl1805 https://gist.github.com/dmsl1805/ad9a14b127d0409cf9621dc13d237457
 func snakeCased(str: String) -> String? {
     let pattern = "([a-z0-9])([A-Z])"
 
