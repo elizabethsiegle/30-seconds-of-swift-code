@@ -373,3 +373,11 @@ func isSorted(arr: [Int]) -> Int {
 isSorted(arr: [1, 2, 2, 4, 8])
 isSorted(arr: [8, 4, 4, 2, 1])
 isSorted(arr: [1, 4, 2, 8, 4])
+
+///Flip takes a function as an argument, then makes the first argument the last.
+func flip<A,B,C>(_ f:@escaping (A,B) -> C) -> (B,A) -> C {
+    return { (b,a) in f(a,b) }
+}
+//Flip example
+String.init(repeating:"🥳",count:5) == flip(String.init(repeating:count:))(5,"🥳")
+
