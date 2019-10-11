@@ -780,6 +780,31 @@ isSorted(arr: [1, 4, 2, 8, 4]) // 0
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
+### camel case string to snake case
+Convert camel case string (ex.'appleStore', 'TimCook') to snake case (ex. `apple_store`, 'tim_cook')
+```swift
+func camelCaseToSnake(str: String) -> String {
+    guard let regex = try? NSRegularExpression(pattern: "([a-z0-9])([A-Z])", options: []) else {
+        return str
+    }
+    let range = NSRange(location: 0, length: str.count)
+    return regex.stringByReplacingMatches(in: str, options: [], range: range, withTemplate: "$1_$2").lowercased()
+}
+
+```
+<details><summary>View Examples</summary>
+
+```swift
+camelCaseToSnake(str: "appleIphoneX")
+camelCaseToSnake(str: "camelCaseStringToSnakeCase")
+camelCaseToSnake(str: "string")
+camelCaseToSnake(str: String())
+camelCaseToSnake(str: "firstPullRequestForHacktoberFest🍁☔️🤖")
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
 ## Contributors
 
 [//]: #* 
