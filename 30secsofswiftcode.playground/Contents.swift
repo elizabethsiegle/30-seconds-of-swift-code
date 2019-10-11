@@ -373,3 +373,18 @@ func isSorted(arr: [Int]) -> Int {
 isSorted(arr: [1, 2, 2, 4, 8])
 isSorted(arr: [8, 4, 4, 2, 1])
 isSorted(arr: [1, 4, 2, 8, 4])
+
+// Convert camel case string to snake case:
+func camelCaseToSnake(str: String) -> String {
+    guard let regex = try? NSRegularExpression(pattern: "([a-z0-9])([A-Z])", options: []) else {
+        return str
+    }
+    let range = NSRange(location: 0, length: str.count)
+    return regex.stringByReplacingMatches(in: str, options: [], range: range, withTemplate: "$1_$2").lowercased()
+}
+
+camelCaseToSnake(str: "appleIphoneX")
+camelCaseToSnake(str: "camelCaseStringToSnakeCase")
+camelCaseToSnake(str: "string")
+camelCaseToSnake(str: String())
+camelCaseToSnake(str: "hacktoberFest🍁☔️🤖")
