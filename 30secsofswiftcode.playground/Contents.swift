@@ -271,6 +271,18 @@ func drop(arr: [AnyHashable], num: Int) -> [AnyHashable] {
 drop(arr: [5, 4, 3, 2, 1, 0], num: 1)
 drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
 
+//Removes elements from the end of an array until the passed function returns true
+func dropRight(arr: [Int], while predicate: ((Int) -> Bool)) -> [Int] {
+    var returnArr = arr
+    for item in arr.reversed() {
+        if predicate(item) { break }
+        returnArr = returnArr.dropLast()
+    }
+    return returnArr
+}
+dropRight(arr: [1, 2, 3, 4, 5], while: { $0 < 0 }) //[]
+dropRight(arr: [1, 2, 3, 4, 5], while: { $0 > 0 })//[1, 2, 3, 4, 5]
+
 // Convert an angle from radians to degrees
 func radiansToDegrees(_ angle: Double) -> Double {
     return angle * 180 / .pi
@@ -374,10 +386,24 @@ isSorted(arr: [1, 2, 2, 4, 8])
 isSorted(arr: [8, 4, 4, 2, 1])
 isSorted(arr: [1, 4, 2, 8, 4])
 
+// Convert camel case string to snake case:
+func camelCaseToSnake(str: String) -> String {
+    guard let regex = try? NSRegularExpression(pattern: "([a-z0-9])([A-Z])", options: []) else {
+        return str
+    }
+    let range = NSRange(location: 0, length: str.count)
+    return regex.stringByReplacingMatches(in: str, options: [], range: range, withTemplate: "$1_$2").lowercased()
+}
+camelCaseToSnake(str: "appleIphoneX")
+camelCaseToSnake(str: "camelCaseStringToSnakeCase")
+camelCaseToSnake(str: "string")
+camelCaseToSnake(str: String())
+camelCaseToSnake(str: "hacktoberFest🍁☔️🤖")
+
 ///Flip takes a function as an argument, then makes the first argument the last.
 func flip<A,B,C>(_ f:@escaping (A,B) -> C) -> (B,A) -> C {
     return { (b,a) in f(a,b) }
 }
+
 //Flip example
 String.init(repeating:"🥳",count:5) == flip(String.init(repeating:count:))(5,"🥳")
-
