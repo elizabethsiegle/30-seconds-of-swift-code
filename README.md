@@ -49,6 +49,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#is-upper-case"><code>isUpperCase</code></a></li>
 <li><a href = "#palindrome"><code>palindrome</code></a></li>
 <li><a href = "#drop"><code>drop</code></a></li>
+<li><a href = "#drop-right-while"><code>dropRightWhile</code></a></li>
 <li><a href = "#nth-element"><code>nthElement</code></a></li>
 <li><a href = "#filter-non-unique"><code>filterNonUnique</code></a></li>
 </ul></details>
@@ -675,6 +676,30 @@ drop(arr: [5, 4, 3, 2, 1, 0], num: 1)
 drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
 ```
 </details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### drop right while
+Removes elements from the end of an array until the passed function returns true.
+```swift
+func dropRight(arr: [Int], while predicate: ((Int) -> Bool)) -> [Int] {
+    var returnArr = arr
+    for item in arr.reversed() {
+        if predicate(item) { break }
+        returnArr = returnArr.dropLast()
+    }
+    return returnArr
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+dropRight(arr: [1, 2, 3, 4, 5], while: { $0 < 0 }) //[]
+dropRight(arr: [1, 2, 3, 4, 5], while: { $0 > 0 }) //[1, 2, 3, 4, 5]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### filter non unique 
 Filters out the non-unique values in a list
