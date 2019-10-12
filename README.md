@@ -746,7 +746,7 @@ snake(str: "AllThe-small Things") // "all_the_smal_things"
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
-### firstUnniqueCharacter
+### first-unique-character
 Returns first unique character in a string
 ```swift
 func firstUniqueCharacter(_ str: String) -> Character? {
