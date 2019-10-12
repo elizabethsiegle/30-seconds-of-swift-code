@@ -406,4 +406,4 @@ func flip<A,B,C>(_ f:@escaping (A,B) -> C) -> (B,A) -> C {
 }
 
 //Flip example
-String.init(repeating:"🥳",count:5) == flip(String.init(repeating:count:))(5,"🥳")
+String.init(repeating:"🥳",count:5) == flip(String.init(repeating:count:))(5,"🥳") //true 
