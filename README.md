@@ -85,6 +85,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#is-upper-case"><code>isUpperCase</code></a></li>
 <li><a href = "#palindrome"><code>palindrome</code></a></li>
 <li><a href = "#snake"><code>snake</code></a></li>
+<li><a href = "#first-unique-character"><code>firstUniqueCharacter</code></a></li>
 </ul></details>
 
 <hr></hr> 
@@ -740,6 +741,26 @@ snake(str: "camelCase") // 'camel_case'
 snake(str: "some text") // 'some_text'
 snake(str: "some-mixed_string With spaces_underscores-and-hyphens") // 'some_mixed_string_with_spaces_underscores_and_hyphens'
 snake(str: "AllThe-small Things") // "all_the_smal_things"
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### firstUnniqueCharacter
+Returns first unique character in a string
+```swift
+func firstUniqueCharacter(_ str: String) -> Character? {
+  var countDict: [Character: Int] = [:]
+  for char in str {
+    countDict[char] = (countDict[char] ?? 0) + 1
+  }
+  return str.filter{countDict[$0] == 1}.first
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+firstUniqueCharacter("barbeque nation") //"r"
 ```
 </details>
 
