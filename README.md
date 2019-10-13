@@ -49,6 +49,9 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#is-upper-case"><code>isUpperCase</code></a></li>
 <li><a href = "#palindrome"><code>palindrome</code></a></li>
 <li><a href = "#drop"><code>drop</code></a></li>
+<li><a href = "#drop-right-while"><code>dropRightWhile</code></a></li>
+<li><a href = "#nth-element"><code>nthElement</code></a></li>
+<li><a href = "#filter-non-unique"><code>filterNonUnique</code></a></li>
 </ul></details>
 
 ### :heavy_division_sign: Math
@@ -62,6 +65,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#factorial"><code>factorial</code></a></li>
 <li><a href = "#calc-median"><code>calcMedian</code></a></li>
 <li><a href = "#calc-better-median"><code>calcBetterMedian</code></a></li>
+<li><a href = "#radians-to-degrees"><code>radiansToDegrees</code></a></li>
 </ul></details>
 
 ### :card_file_box: Object
@@ -80,6 +84,8 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#is-lower-case"><code>isLowerCase</code></a></li>
 <li><a href = "#is-upper-case"><code>isUpperCase</code></a></li>
 <li><a href = "#palindrome"><code>palindrome</code></a></li>
+<li><a href = "#snake"><code>snake</code></a></li>
+<li><a href = "#first-unique-character"><code>firstUniqueCharacter</code></a></li>
 </ul></details>
 
 <hr></hr> 
@@ -455,6 +461,20 @@ calcBetterMedian(arr: [1,2,3,4,5,6,7,8]) //returns 4.5
 ```
 </details>
 
+### radians to degrees
+Convert an angle from radians to degrees.
+```swift
+func radiansToDegrees(_ angle: Double) -> Double {
+    return angle * 180 / .pi
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+radiansToDegrees(4) // 229.183
+```
+</details>
+
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ## :card_file_box: Object
@@ -660,7 +680,207 @@ drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
+### drop right while
+Removes elements from the end of an array until the passed function returns true.
+```swift
+func dropRight(arr: [Int], while predicate: ((Int) -> Bool)) -> [Int] {
+    var returnArr = arr
+    for item in arr.reversed() {
+        if predicate(item) { break }
+        returnArr = returnArr.dropLast()
+    }
+    return returnArr
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+dropRight(arr: [1, 2, 3, 4, 5], while: { $0 < 0 }) //[]
+dropRight(arr: [1, 2, 3, 4, 5], while: { $0 > 0 }) //[1, 2, 3, 4, 5]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### filter non unique 
+Filters out the non-unique values in a list
+```swift
+func filterNonUnique(arr: [Any]) -> [Any] {
+    let set = NSOrderedSet(array: arr)
+    return set.array
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+filterNonUnique(arr: [1, 2, 2, 3, 5]) // [1, 2, 3, 5]
+filterNonUnique(arr: ["Tim", "Steve", "Tim", "Jony", "Phil"]) // ["Tim", "Steve", "Jony", "Phil"]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### snake
+Returns a new string in snake case
+```swift
+func snake(str: String) -> String? {
+    let pattern = "([a-z0-9])([A-Z])"
+
+    let regex = try? NSRegularExpression(pattern: pattern, options: [])
+    let range = NSRange(location: 0, length: str.count)
+    return regex?.stringByReplacingMatches(in: str, options: [], range: range, withTemplate: "$1_$2")
+        .lowercased() 
+        .replacingOccurrences(of: " ", with: "_")
+        .replacingOccurrences(of: "-", with: "_")
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+snake(str: "camelCase") // 'camel_case'
+snake(str: "some text") // 'some_text'
+snake(str: "some-mixed_string With spaces_underscores-and-hyphens") // 'some_mixed_string_with_spaces_underscores_and_hyphens'
+snake(str: "AllThe-small Things") // "all_the_smal_things"
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### first-unique-character
+Returns first unique character in a string
+```swift
+func firstUniqueCharacter(_ str: String) -> Character? {
+  var countDict: [Character: Int] = [:]
+  for char in str {
+    countDict[char] = (countDict[char] ?? 0) + 1
+  }
+  return str.filter{countDict[$0] == 1}.first
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+firstUniqueCharacter("barbeque nation") //"r"
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### nth element
+Returns every nth element from given list.
+```swift
+func everyNth(list: [Any], n: Int) -> [Any] {
+    return list.enumerated().compactMap({ ($0.offset + 1) % n == 0 ? $0.element : nil })
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+everyNth(list: [1, 2, 3, 4, 5, 6], n: 2) // [ 2, 4, 6 ]
+everyNth(list: ["a", "b", "c", "d", "e", "f"], n: 3) // [ "c", "f" ]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### is sorted
+Returns 1 if array is sorted in ascending order, -1 if descending order, and 0 if unsorted
+```swift
+func isSorted(arr: [Int]) -> Int {
+    var asc: Bool = true
+    var prev: Int = Int.min
+    for elem in arr {
+        if elem < prev {
+            asc = false
+            break
+        }
+        prev = elem
+    }
+    if asc {
+        return 1
+    }
+    var dsc: Bool = true
+    prev = Int.max
+    for elem in arr {
+        if elem > prev {
+            dsc = false
+            break
+        }
+        prev = elem
+    }
+    if dsc {
+        return -1
+    }
+
+    return 0
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+isSorted(arr: [1, 2, 2, 4, 8]) // 1
+isSorted(arr: [8, 4, 4, 2, 1]) // -1
+isSorted(arr: [1, 4, 2, 8, 4]) // 0
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### camel case string to snake case
+Convert camel case string (ex.'appleStore', 'TimCook') to snake case (ex. `apple_store`, 'tim_cook')
+```swift
+func camelCaseToSnake(str: String) -> String {
+    guard let regex = try? NSRegularExpression(pattern: "([a-z0-9])([A-Z])", options: []) else {
+        return str
+    }
+    let range = NSRange(location: 0, length: str.count)
+    return regex.stringByReplacingMatches(in: str, options: [], range: range, withTemplate: "$1_$2").lowercased()
+}
+
+```
+<details><summary>View Examples</summary>
+
+```swift
+camelCaseToSnake(str: "appleIphoneX")
+camelCaseToSnake(str: "camelCaseStringToSnakeCase")
+camelCaseToSnake(str: "string")
+camelCaseToSnake(str: String())
+camelCaseToSnake(str: "firstPullRequestForHacktoberFest🍁☔️🤖")
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### Flip
+Flip takes a function as an argument, then makes the first argument the last.
+```swift
+func flip<A,B,C>(_ f:@escaping (A,B) -> C) -> (B,A) -> C {
+    return { (b,a) in f(a,b) }
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+String.init(repeating:"🥳",count:5) == flip(String.init(repeating:count:))(5,"🥳") //true
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+
 ## Contributors
 
-[//]: #*
+[//]: #* 
+[Lizzie Siegle](https://github.com/elizabethsiegle)
 
+[Abdulhakim Ajetunmobi](https://github.com/abdulajet)
+
+[Hatos Barbosa](https://github.com/hatosbarbosa)
+
+[Paul Schroder](https://github.com/phjs)
+
+[Viktor Sokolov](https://github.com/BNTR)
+
+[Sai Sandeep Mutyala](https://github.com/heliostrike)
+
+[Alexey Ivanov](https://github.com/t0rn)
