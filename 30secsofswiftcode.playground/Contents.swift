@@ -394,13 +394,19 @@ func camelCaseToSnake(str: String) -> String {
     let range = NSRange(location: 0, length: str.count)
     return regex.stringByReplacingMatches(in: str, options: [], range: range, withTemplate: "$1_$2").lowercased()
 }
-
 camelCaseToSnake(str: "appleIphoneX")
 camelCaseToSnake(str: "camelCaseStringToSnakeCase")
 camelCaseToSnake(str: "string")
 camelCaseToSnake(str: String())
 camelCaseToSnake(str: "hacktoberFest🍁☔️🤖")
 
+///Flip takes a function as an argument, then makes the first argument the last.
+func flip<A,B,C>(_ f:@escaping (A,B) -> C) -> (B,A) -> C {
+    return { (b,a) in f(a,b) }
+}
+
+//Flip example
+String.init(repeating:"🥳",count:5) == flip(String.init(repeating:count:))(5,"🥳") //true 
 // Return first unique character of string
 func firstUniqueCharacter(_ str: String) -> Character? {
   var countDict: [Character: Int] = [:]

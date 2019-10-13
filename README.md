@@ -851,6 +851,23 @@ camelCaseToSnake(str: "firstPullRequestForHacktoberFest🍁☔️🤖")
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
+### Flip
+Flip takes a function as an argument, then makes the first argument the last.
+```swift
+func flip<A,B,C>(_ f:@escaping (A,B) -> C) -> (B,A) -> C {
+    return { (b,a) in f(a,b) }
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+String.init(repeating:"🥳",count:5) == flip(String.init(repeating:count:))(5,"🥳") //true
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+
 ## Contributors
 
 [//]: #* 
@@ -865,3 +882,5 @@ camelCaseToSnake(str: "firstPullRequestForHacktoberFest🍁☔️🤖")
 [Viktor Sokolov](https://github.com/BNTR)
 
 [Sai Sandeep Mutyala](https://github.com/heliostrike)
+
+[Alexey Ivanov](https://github.com/t0rn)
