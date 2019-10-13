@@ -400,3 +400,13 @@ camelCaseToSnake(str: "camelCaseStringToSnakeCase")
 camelCaseToSnake(str: "string")
 camelCaseToSnake(str: String())
 camelCaseToSnake(str: "hacktoberFest🍁☔️🤖")
+
+// Return first unique character of string
+func firstUniqueCharacter(_ str: String) -> Character? {
+  var countDict: [Character: Int] = [:]
+  for char in str {
+    countDict[char] = (countDict[char] ?? 0) + 1
+  }
+  return str.filter{countDict[$0] == 1}.first
+}
+firstUniqueCharacter("barbeque nation")
