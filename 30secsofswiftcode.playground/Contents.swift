@@ -407,3 +407,12 @@ func flip<A,B,C>(_ f:@escaping (A,B) -> C) -> (B,A) -> C {
 
 //Flip example
 String.init(repeating:"🥳",count:5) == flip(String.init(repeating:count:))(5,"🥳") //true 
+// Return first unique character of string
+func firstUniqueCharacter(_ str: String) -> Character? {
+  var countDict: [Character: Int] = [:]
+  for char in str {
+    countDict[char] = (countDict[char] ?? 0) + 1
+  }
+  return str.filter{countDict[$0] == 1}.first
+}
+firstUniqueCharacter("barbeque nation")
