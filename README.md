@@ -678,6 +678,64 @@ drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
 ```
 </details>
 
+### array to csv
+Returns a CSV-String created from 2D-Array.
+```swift
+func arrayToCSV(_ inputArray: [Array<String>]) -> String {
+    var csv: String = ""
+    for row in inputArray {
+        csv.append(row.map { "\"\($0)\"" } .joined(separator: ", ") + "\n")
+    }
+    return csv
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+arrayToCSV([["a", "b", "c"], ["d", "e", "f"], ["g", "h", "i"]])
+//"a", "b", "c"
+//"d", "e", "f"
+//"g", "h", "i"
+```
+</details>
+
+
+### flip
+Returns the given function with fliped arguments.
+```swift
+func flip<A, B, C>(_ function: @escaping ((A, B) -> C)) -> ((B, A)->C) {
+    return { (a, b) in
+        return function(b, a)
+    }
+}
+```
+
+<details><summary>View Examples</summary>
+
+```swift
+// flip example 1
+func concat(_ alpha: String, _ beta: String) -> String {
+    return alpha + beta
+}
+
+let reverseConcat = flip(concat)
+concat("A", "B") //"AB"
+reverseConcat("A", "B") //"BA"
+
+// flip example 2
+func gt(_ a: Int, _ b: Int) -> Bool {
+    return a > b
+}
+
+let lt = flip(gt)
+
+gt(5, 3) //true
+lt(5, 3) //false
+gt(2, 5) //false
+lt(2, 5) //true
+```
+</details>
+
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### drop right while
@@ -883,4 +941,8 @@ String.init(repeating:"🥳",count:5) == flip(String.init(repeating:count:))(5,"
 
 [Sai Sandeep Mutyala](https://github.com/heliostrike)
 
+[Sören Kirchner](https://github.com/soeren-kirchner)
+
 [Alexey Ivanov](https://github.com/t0rn)
+
+[Júlio John Tavares Ramos](https://github.com/JulioJohn)

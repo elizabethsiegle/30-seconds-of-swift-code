@@ -276,6 +276,46 @@ func dropLeft(arr: [AnyHashable], num: Int) -> [AnyHashable] {
 drop(arr: [5, 4, 3, 2, 1, 0], num: 1)
 drop(arr: ["Huey", "Dewey", "Louie"], num: 3)
 
+func arrayToCSV(_ inputArray: [Array<String>]) -> String {
+    var csv: String = ""
+    for row in inputArray {
+        csv.append(row.map { "\"\($0)\"" } .joined(separator: ", ") + "\n")
+    }
+    return csv
+}
+arrayToCSV([["a", "b", "c"], ["d", "e", "f"], ["g", "h", "i"]])
+//"a", "b", "c"
+//"d", "e", "f"
+//"g", "h", "i"
+
+// returns the same function with fliped arguments
+func flip<A, B, C>(_ function: @escaping ((A, B) -> C)) -> ((B, A)->C) {
+    return { (a, b) in
+        return function(b, a)
+    }
+}
+
+// flip example 1
+func concat(_ alpha: String, _ beta: String) -> String {
+    return alpha + beta
+}
+
+let reverseConcat = flip(concat)
+concat("A", "B") //"AB"
+reverseConcat("A", "B") //"BA"
+
+// flip example 2
+func gt(_ a: Int, _ b: Int) -> Bool {
+    return a > b
+}
+
+let lt = flip(gt)
+
+gt(5, 3) //true
+lt(5, 3) //false
+gt(2, 5) //false
+lt(2, 5) //true
+
 //Removes elements from the end of an array until the passed function returns true
 func dropRight(arr: [Int], while predicate: ((Int) -> Bool)) -> [Int] {
     var returnArr = arr
