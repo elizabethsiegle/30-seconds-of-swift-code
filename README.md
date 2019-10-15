@@ -905,30 +905,47 @@ camelCaseToSnake(str: "string")
 camelCaseToSnake(str: String())
 camelCaseToSnake(str: "firstPullRequestForHacktoberFest🍁☔️🤖")
 ```
+
 </details>
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### Flip
+
 Flip takes a function as an argument, then makes the first argument the last.
+
 ```swift
 func flip<A,B,C>(_ f:@escaping (A,B) -> C) -> (B,A) -> C {
     return { (b,a) in f(a,b) }
 }
 ```
+
 <details><summary>View Examples</summary>
 
 ```swift
 String.init(repeating:"🥳",count:5) == flip(String.init(repeating:count:))(5,"🥳") //true
 ```
+
 </details>
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
+### Graph
+
+Returns the neighbors of a vertex
+
+```swift
+public func neighborsForIndex(_ index: Int) -> [VertexType] {
+    return edges[index].map({self.vertices[$0.v]})
+}
+```
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ## Contributors
 
-[//]: #* 
+[//]: #*
+
 [Lizzie Siegle](https://github.com/elizabethsiegle)
 
 [Abdulhakim Ajetunmobi](https://github.com/abdulajet)
