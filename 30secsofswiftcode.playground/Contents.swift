@@ -461,3 +461,8 @@ func firstUniqueCharacter(_ str: String) -> Character? {
   return str.filter{countDict[$0] == 1}.first
 }
 firstUniqueCharacter("barbeque nation")
+
+// Find neighbors from vertex
+public func neighborsForIndex(_ index: Int) -> [VertexType] {
+    return edges[index].map({self.vertices[$0.v]})
+}
