@@ -561,6 +561,7 @@ func capitalizeEveryWord(str: String) -> String {
 
 ```swift
 capitalizeEveryWord(str: "on a scale from 1 to 10 how would you rate your pain") //On A Scale From...
+capitalizeEveryWord(str: "well, hello there!") //Well, Hello There!
 ```
 </details>
 
