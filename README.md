@@ -92,6 +92,14 @@ This project contains plenty of useful snippets which can help beginners and new
 
 ## :books: List
 
+## Hello world in Swift
+Print Hello World in Swift 
+```
+// Hello, World! Program
+import Swift
+print("Hello, World!")
+```
+
 ### bubble sort 
 BubbleSort is a sorting algorithm that uses the technique of repeatedly comparing and swapping the adjacent elements if they are in the wrong order.
 ```swift
