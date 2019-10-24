@@ -431,6 +431,20 @@ isSorted(arr: [1, 2, 2, 4, 8])
 isSorted(arr: [8, 4, 4, 2, 1])
 isSorted(arr: [1, 4, 2, 8, 4])
 
+//Returns 1 if array is sorted in ascending order (OPTION 2)
+//-1 if array is sorted in descending order
+//0 if array is not sorted
+
+func sortedArray (arr: [Int]) -> Int {
+    let sortedArr = arr.sorted(by: {$1>$0})
+    return arr == sortedArr ? 1 : arr == sortedArr.reversed() ?  -1 :  0
+}
+
+//Input sortedArray(arr: [1,2,3,4,5]) - Output 1
+//Input sortedArray(arr: [5,4,3,2,1]) - Output -1
+//Input sortedArray(arr: [6,2,3,4,8]) - Output 0
+
+
 // Convert camel case string to snake case:
 func camelCaseToSnake(str: String) -> String {
     guard let regex = try? NSRegularExpression(pattern: "([a-z0-9])([A-Z])", options: []) else {
