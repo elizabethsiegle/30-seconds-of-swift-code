@@ -445,24 +445,43 @@ camelCaseToSnake(str: "string")
 camelCaseToSnake(str: String())
 camelCaseToSnake(str: "hacktoberFest🍁☔️🤖")
 
-///Flip takes a function as an argument, then makes the first argument the last.
-func flip<A,B,C>(_ f:@escaping (A,B) -> C) -> (B,A) -> C {
-    return { (b,a) in f(a,b) }
+/////Flip takes a function as an argument, then makes the first argument the last.
+//func flip<A,B,C>(_ f:@escaping (A,B) -> C) -> (B,A) -> C {
+//    return { (b,a) in f(a,b) }
+//}
+//
+////Flip example
+//String.init(repeating:"🥳",count:5) == flip(String.init(repeating:count:))(5,"🥳") //true
+//// Return first unique character of string
+//func firstUniqueCharacter(_ str: String) -> Character? {
+//  var countDict: [Character: Int] = [:]
+//  for char in str {
+//    countDict[char] = (countDict[char] ?? 0) + 1
+//  }
+//  return str.filter{countDict[$0] == 1}.first
+//}
+//firstUniqueCharacter("barbeque nation")
+//
+//// Find neighbors from vertex
+//public func neighborsForIndex(_ index: Int) -> [VertexType] {
+//    return edges[index].map({self.vertices[$0.v]})
+//}
+
+//MARK: Flatten function
+let optionalArrays = [[1,nil,3,4],[5,6,7,8]]
+let arrays = [["a","b","c","d"],["e","f","g","y"]]
+
+
+/// We use flat map to flatten the array and compact map to handle optionals
+/// - Parameter arrays: Array of arrays to flatten
+func flatten<T>(arrays: [[T?]]) -> [T] {
+    return arrays.flatMap{$0}.compactMap{$0}
 }
 
-//Flip example
-String.init(repeating:"🥳",count:5) == flip(String.init(repeating:count:))(5,"🥳") //true 
-// Return first unique character of string
-func firstUniqueCharacter(_ str: String) -> Character? {
-  var countDict: [Character: Int] = [:]
-  for char in str {
-    countDict[char] = (countDict[char] ?? 0) + 1
-  }
-  return str.filter{countDict[$0] == 1}.first
-}
-firstUniqueCharacter("barbeque nation")
+flatten(arrays: arrays) // ["a", "b", "c", "d", "e", "f", "g", "y"]
+flatten(arrays: optionalArrays) // [1, 3, 4, 5, 6, 7, 8]
 
-// Find neighbors from vertex
-public func neighborsForIndex(_ index: Int) -> [VertexType] {
-    return edges[index].map({self.vertices[$0.v]})
-}
+assert(flatten(arrays: arrays).count == 8)
+assert(flatten(arrays: optionalArrays).count == 7)
+
+
