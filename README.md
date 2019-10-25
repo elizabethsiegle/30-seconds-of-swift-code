@@ -294,7 +294,24 @@ shuffle(arr1: foo) //[2,3,1] , foo = [1,2,3]
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
+### Generic flatten
+Takes an array of arrays as input and transforms it to a flattened array of its type. ( handles optionals )
+```swift
+/// We use flat map to flatten the array and compact map to handle optionals
+/// - Parameter arrays: Array of arrays to flatten
+func flatten<T>(arrays: [[T?]]) -> [T] {
+    return arrays.flatMap{$0}.compactMap{$0}
+}
+```
+<details><summary>View Examples</summary>
 
+```swift
+flatten(arrays: [["a","b","c","d"],["e","f","g","y"]]) // ["a", "b", "c", "d", "e", "f", "g", "y"]
+flatten(arrays: [[1,nil,3,4],[5,6,7,8]]) // [1, 3, 4, 5, 6, 7, 8]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ## :heavy_division_sign: Math
 
