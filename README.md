@@ -94,7 +94,7 @@ This project contains plenty of useful snippets which can help beginners and new
 
 ## Hello world in Swift
 Print Hello World in Swift 
-```
+```swift
 // Hello, World! Program
 import Swift
 print("Hello, World!")
@@ -305,6 +305,14 @@ shuffle(arr1: foo) //[2,3,1] , foo = [1,2,3]
 
 
 ## :heavy_division_sign: Math
+### Sum
+
+Return the sum of any two integers. You can change the data type to calculate the sum of other number types
+``` swift
+func sum_xy(x: Int, y: Int) ->Int {
+    return x + y
+}
+```
 
 ### average 
 Returns the average of two or more doubles in an array.
