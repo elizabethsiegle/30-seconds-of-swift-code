@@ -99,12 +99,13 @@ Print Hello World in Swift
 import Swift
 print("Hello, World!")
 ```
-<details><summary>View Examples</summary>
-    
-</details>
+<details><summary>View Examples</summary>  
+
 ```
  // "Hello, World" 
 ```
+</details>
+
 ### bubble sort 
 BubbleSort is a sorting algorithm that uses the technique of repeatedly comparing and swapping the adjacent elements if they are in the wrong order.
 ```swift
