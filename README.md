@@ -310,7 +310,9 @@ shuffle(arr1: foo) //[2,3,1] , foo = [1,2,3]
 Return the sum of any two integers. You can change the data type to calculate the sum of other number types
 ``` swift
 func sum_xy(x: Int, y: Int) ->Int {
+
     return x + y
+    
 }
 ```
 
