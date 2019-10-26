@@ -294,7 +294,7 @@ shuffle(arr1: foo) //[2,3,1] , foo = [1,2,3]
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
-### Generic flatten
+### generic flatten
 Takes an array of arrays as input and transforms it to a flattened array of its type. ( handles optionals )
 ```swift
 /// We use flat map to flatten the array and compact map to handle optionals
