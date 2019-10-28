@@ -24,6 +24,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#filter-bools"><code>filterBools</code></a></li>
 <li><a href = "#chunk"><code>chunk</code></a></li>
 <li><a href = "#count-occurrences"><code>countOccurrences</code></a></li>
+<li><a href = "#flatten"><code>flatten</code></a></li>
 <li><a href = "#deep-flatten"><code>deepFlatten</code></a></li>
 <li><a href = "#difference"><code>difference</code></a></li>
 <li><a href = "#duplicates"><code>duplicates</code></a></li>
@@ -177,6 +178,30 @@ func countOccurrences(arr: [String], into: String) -> Int {
 
 ```swift
 countOccurrences(arr: ["FOO", "FOO", "BAR"], into: "FOO") //2
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### flatten 
+
+Flattens a list of lists once.
+```swift
+func flatten<T>(list: [[T]]) -> [T] {
+    var flattenList = [T]()
+    
+    list.forEach { element in
+        flattenList.append(contentsOf: element)
+    }
+    
+    return flattenList
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+flatten(list: [[1, 2, 2, 3, 5], [6, 7, 8, 9], [10, 11, 12]]) //[1, 2, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12]
+flatten(list: [["Tim", "Steve"], ["Kevin", "Jony", "Phil"]]) //["Tim", "Steve", "Kevin", "Jony", "Phil"]
 ```
 </details>
 
