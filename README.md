@@ -188,13 +188,7 @@ countOccurrences(arr: ["FOO", "FOO", "BAR"], into: "FOO") //2
 Flattens a list of lists once.
 ```swift
 func flatten<T>(list: [[T]]) -> [T] {
-    var flattenList = [T]()
-    
-    list.forEach { element in
-        flattenList.append(contentsOf: element)
-    }
-    
-    return flattenList
+    return list.flatMap { $0 }
 }
 ```
 <details><summary>View Examples</summary>
