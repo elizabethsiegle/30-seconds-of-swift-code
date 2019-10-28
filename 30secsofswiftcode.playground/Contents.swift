@@ -48,13 +48,7 @@ countOccurrences(arr: ["FOO", "FOO", "BAR"], into: "FOO") //2
 
 // flattens a list of lists once.
 func flatten<T>(list: [[T]]) -> [T] {
-    var flattenList = [T]()
-    
-    list.forEach { element in
-        flattenList.append(contentsOf: element)
-    }
-    
-    return flattenList
+    return list.flatMap { $0 }
 }
 flatten(list: [[1, 2, 2, 3, 5], [6, 7, 8, 9], [10, 11, 12]])
 flatten(list: [["Tim", "Steve"], ["Kevin", "Jony", "Phil"]])
