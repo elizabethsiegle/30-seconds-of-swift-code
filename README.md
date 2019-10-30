@@ -52,6 +52,8 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#drop-right-while"><code>dropRightWhile</code></a></li>
 <li><a href = "#nth-element"><code>nthElement</code></a></li>
 <li><a href = "#filter-non-unique"><code>filterNonUnique</code></a></li>
+<li><a href = "#generic-flatten"><code>genericFlatten</code></a></li>
+
 </ul></details>
 
 ### :heavy_division_sign: Math
