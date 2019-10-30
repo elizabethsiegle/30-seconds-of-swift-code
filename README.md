@@ -981,3 +981,5 @@ public func neighborsForIndex(_ index: Int) -> [VertexType] {
 [Alexey Ivanov](https://github.com/t0rn)
 
 [Júlio John Tavares Ramos](https://github.com/JulioJohn)
+
+[Nicolas Combe](https://github.com/NicolasCombe5555)
