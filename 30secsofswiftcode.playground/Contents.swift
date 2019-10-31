@@ -93,6 +93,13 @@ func insertionSort(_ array: [Int]) -> [Int] {
 let list = [ 10, -1, 3, 9, 2, 27, 8, 5, 1, 3, 0, 26 ]
 insertionSort(list) //[-1, 0, 1, 2, 3, 3, 5, 8, 9, 10, 26, 27]
 
+//Using Swift Standard Library Sort
+// Link to Official Apple Developer Documentation - https://developer.apple.com/documentation/swift/array/1688499-sort
+var integerArray = [5,8,2,3,656,9,1]
+var stringArray = ["India", "Norway", "France", "Canada", "Italy"]
+integerArray.sort() //[1, 2, 3, 5, 8, 9, 656]
+stringArray.sort() //["Canada", "France", "India", "Italy", "Norway"]
+
 //fisher-yates shuffle
 func shuffle(arr1: [AnyHashable]) -> [AnyHashable] {
     var arr2 = arr1
