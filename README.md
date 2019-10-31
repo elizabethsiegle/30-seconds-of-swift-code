@@ -87,6 +87,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#is-upper-case"><code>isUpperCase</code></a></li>
 <li><a href = "#palindrome"><code>palindrome</code></a></li>
 <li><a href = "#snake"><code>snake</code></a></li>
+<li><a href = "#simple_snake_case"><code>simple_snake_case</code></a></li>
 <li><a href = "#first-unique-character"><code>firstUniqueCharacter</code></a></li>
 </ul></details>
 
@@ -850,6 +851,25 @@ snake(str: "AllThe-small Things") // "all_the_smal_things"
 </details>
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### simple_snake_case
+Returns a new string in snake case
+```swift
+func snakeCase(_ string: String) -> String {
+    let arrayOfStrings = text.components(separatedBy: " ")
+    return arrayOfStrings.joined(separator: "_")
+}
+```
+<details><summary>View Examples</summary>
+    
+```swift
+    let text = "Snake case is the practice of writing compound words or phrases in which the elements are separated with one underscore character and no spaces."
+    snakeCase(text)
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a
+    
 
 ### first-unique-character
 Returns first unique character in a string
