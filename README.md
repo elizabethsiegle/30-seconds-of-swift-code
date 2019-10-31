@@ -148,6 +148,33 @@ chunk(arr: ["young", "scrappy", "hungry"], chunkSize: 2) //[["young", "scrappy"]
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
+### every_nth
+Returns every nth element in a given list and a new list is created that contains every nth element of the given list.
+
+```swift
+func getEvery( nth: Int, from list: [Any] ) {
+    var nthElements = [Any]()
+    var shiftedList = list
+    shiftedList.insert(0, at: 0)
+    
+    for (i, element) in shiftedList.enumerated() {
+        if i > 0 && i.isMultiple(of: nth) {
+            nthElements.append(element)
+        }
+    }
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+getEvery(nth: 4, from: ["The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"])  //["fox", "lazy"]
+
+getEvery(nth: 2, from: [1,2,3,4,5,6,7,8,9]) //[2, 4, 6, 8]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
 ### filter bools
 
 Remove every value that's not a Boolean.
