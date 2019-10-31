@@ -27,6 +27,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#deep-flatten"><code>deepFlatten</code></a></li>
 <li><a href = "#difference"><code>difference</code></a></li>
 <li><a href = "#duplicates"><code>duplicates</code></a></li>
+<li><a href = "#every_nth"><code>every_nth</code></a></li>
 <li><a href = "#insertion-sort"><code>insertionSort</code></a></li>
 <li><a href = "#fisher-yates-shuffle"><code>fisherYatesShuffle</code></a></li>
 <li><a href = "#calc-median"><code>calcMedian</code></a></li>
@@ -1032,3 +1033,5 @@ public func neighborsForIndex(_ index: Int) -> [VertexType] {
 [Júlio John Tavares Ramos](https://github.com/JulioJohn)
 
 [Nicolas Combe](https://github.com/NicolasCombe5555)
+
+[William Spanfelner](https://github.com/Will-1-Am)
