@@ -40,6 +40,23 @@ chunk(arr: [1, 3, 5, 9], chunkSize: 4) //[[1, 3, 5, 9]]
 chunk(arr: ["hi", "yo", "bye", "bai"], chunkSize: 3) //[["hi", "yo", "bye"], ["bai"]]
 chunk(arr: ["young", "scrappy", "hungry"], chunkSize: 2) //[["young", "scrappy"], ["hungry"]]
 
+// everyNth - returns every nth element in a list
+func getEvery( nth: Int, from list: [Any] ) {
+    var nthElements = [Any]()
+    var shiftedList = list
+    shiftedList.insert(0, at: 0)
+    
+    for (i, element) in shiftedList.enumerated() {
+        if i > 0 && i.isMultiple(of: nth) {
+            nthElements.append(element)
+            print(nthElements)
+        }
+    }
+}
+getEvery(nth: 4, from: ["The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"])
+getEvery(nth: 2, from: [1,2,3,4,5,6,7,8,9])
+
+
 //count occurrences of a string in an array
 func countOccurrences(arr: [String], into: String) -> Int {
     return arr.reduce(0) { $1 == into ? $0 + 1 : $0 }
@@ -444,6 +461,15 @@ camelCaseToSnake(str: "camelCaseStringToSnakeCase")
 camelCaseToSnake(str: "string")
 camelCaseToSnake(str: String())
 camelCaseToSnake(str: "hacktoberFest🍁☔️🤖")
+
+// Simple_snake_case - Convert a string to snake case
+func snakeCase(_ string: String) -> String {
+    let arrayOfStrings = text.components(separatedBy: " ")
+    return arrayOfStrings.joined(separator: "_")
+}
+let text = "Snake case is the practice of writing compound words or phrases in which the elements are separated with one underscore character and no spaces."
+
+snakeCase(text)
 
 /////Flip takes a function as an argument, then makes the first argument the last.
 //func flip<A,B,C>(_ f:@escaping (A,B) -> C) -> (B,A) -> C {
