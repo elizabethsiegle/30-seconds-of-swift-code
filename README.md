@@ -27,6 +27,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#deep-flatten"><code>deepFlatten</code></a></li>
 <li><a href = "#difference"><code>difference</code></a></li>
 <li><a href = "#duplicates"><code>duplicates</code></a></li>
+<li><a href = "#every_nth"><code>every_nth</code></a></li>
 <li><a href = "#insertion-sort"><code>insertionSort</code></a></li>
 <li><a href = "#fisher-yates-shuffle"><code>fisherYatesShuffle</code></a></li>
 <li><a href = "#calc-median"><code>calcMedian</code></a></li>
@@ -87,6 +88,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#is-upper-case"><code>isUpperCase</code></a></li>
 <li><a href = "#palindrome"><code>palindrome</code></a></li>
 <li><a href = "#snake"><code>snake</code></a></li>
+<li><a href = "#simple_snake_case"><code>simple_snake_case</code></a></li>
 <li><a href = "#first-unique-character"><code>firstUniqueCharacter</code></a></li>
 </ul></details>
 
@@ -143,6 +145,33 @@ chunk(arr: [2, 4, 6, 8], chunkSize: 1) //[[2], [4], [6], [8]]
 chunk(arr: [1, 3, 5, 9], chunkSize: 4) //[[1, 3, 5, 9]]
 chunk(arr: ["hi", "yo", "bye", "bai"], chunkSize: 3) //[["hi", "yo", "bye"], ["bai"]]
 chunk(arr: ["young", "scrappy", "hungry"], chunkSize: 2) //[["young", "scrappy"], ["hungry"]]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### every_nth
+Returns every nth element in a given list and a new list is created that contains every nth element of the given list.
+
+```swift
+func getEvery( nth: Int, from list: [Any] ) {
+    var nthElements = [Any]()
+    var shiftedList = list
+    shiftedList.insert(0, at: 0)
+    
+    for (i, element) in shiftedList.enumerated() {
+        if i > 0 && i.isMultiple(of: nth) {
+            nthElements.append(element)
+        }
+    }
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+getEvery(nth: 4, from: ["The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"])  //["fox", "lazy"]
+
+getEvery(nth: 2, from: [1,2,3,4,5,6,7,8,9]) //[2, 4, 6, 8]
 ```
 </details>
 
@@ -824,6 +853,25 @@ snake(str: "AllThe-small Things") // "all_the_smal_things"
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
+### simple_snake_case
+Returns a new string in snake case
+```swift
+func snakeCase(_ string: String) -> String {
+    let arrayOfStrings = text.components(separatedBy: " ")
+    return arrayOfStrings.joined(separator: "_")
+}
+```
+<details><summary>View Examples</summary>
+    
+```swift
+    let text = "Snake case is the practice of writing compound words or phrases in which the elements are separated with one underscore character and no spaces."
+    snakeCase(text)
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a
+    
+
 ### first-unique-character
 Returns first unique character in a string
 ```swift
@@ -985,3 +1033,5 @@ public func neighborsForIndex(_ index: Int) -> [VertexType] {
 [Júlio John Tavares Ramos](https://github.com/JulioJohn)
 
 [Nicolas Combe](https://github.com/NicolasCombe5555)
+
+[William Spanfelner](https://github.com/Will-1-Am)
