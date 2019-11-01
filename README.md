@@ -301,6 +301,24 @@ insertionSort(list) //[-1, 0, 1, 2, 3, 3, 5, 8, 9, 10, 26, 27]
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
+### Swift Standard Library Sort
+Link to Official Apple Developer Documentation - https://developer.apple.com/documentation/swift/array/1688499-sort
+```swift
+var integerArray = [5,8,2,3,656,9,1]
+var stringArray = ["India", "Norway", "France", "Canada", "Italy"]
+integerArray.sort() //[1, 2, 3, 5, 8, 9, 656]
+stringArray.sort() //["Canada", "France", "India", "Italy", "Norway"]
+```
+<details><summary>View Examples</summary>
+
+```swift
+integerArray.sort() //[1, 2, 3, 5, 8, 9, 656]
+stringArray.sort() //["Canada", "France", "India", "Italy", "Norway"]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
 ### fisher yates shuffle
 [Fisher-Yates algorithm](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) aka Knuth shuffle to shuffle an array creates a uniform shuffle of the array where each permutation is equally likely in O(n) time.
 ```swift
