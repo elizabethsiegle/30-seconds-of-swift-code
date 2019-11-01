@@ -27,6 +27,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#deep-flatten"><code>deepFlatten</code></a></li>
 <li><a href = "#difference"><code>difference</code></a></li>
 <li><a href = "#duplicates"><code>duplicates</code></a></li>
+<li><a href = "#every_nth"><code>every_nth</code></a></li>
 <li><a href = "#insertion-sort"><code>insertionSort</code></a></li>
 <li><a href = "#fisher-yates-shuffle"><code>fisherYatesShuffle</code></a></li>
 <li><a href = "#calc-median"><code>calcMedian</code></a></li>
@@ -52,6 +53,8 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#drop-right-while"><code>dropRightWhile</code></a></li>
 <li><a href = "#nth-element"><code>nthElement</code></a></li>
 <li><a href = "#filter-non-unique"><code>filterNonUnique</code></a></li>
+<li><a href = "#generic-flatten"><code>genericFlatten</code></a></li>
+
 </ul></details>
 
 ### :heavy_division_sign: Math
@@ -85,6 +88,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#is-upper-case"><code>isUpperCase</code></a></li>
 <li><a href = "#palindrome"><code>palindrome</code></a></li>
 <li><a href = "#snake"><code>snake</code></a></li>
+<li><a href = "#simple_snake_case"><code>simple_snake_case</code></a></li>
 <li><a href = "#first-unique-character"><code>firstUniqueCharacter</code></a></li>
 </ul></details>
 
@@ -141,6 +145,33 @@ chunk(arr: [2, 4, 6, 8], chunkSize: 1) //[[2], [4], [6], [8]]
 chunk(arr: [1, 3, 5, 9], chunkSize: 4) //[[1, 3, 5, 9]]
 chunk(arr: ["hi", "yo", "bye", "bai"], chunkSize: 3) //[["hi", "yo", "bye"], ["bai"]]
 chunk(arr: ["young", "scrappy", "hungry"], chunkSize: 2) //[["young", "scrappy"], ["hungry"]]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### every_nth
+Returns every nth element in a given list and a new list is created that contains every nth element of the given list.
+
+```swift
+func getEvery( nth: Int, from list: [Any] ) {
+    var nthElements = [Any]()
+    var shiftedList = list
+    shiftedList.insert(0, at: 0)
+    
+    for (i, element) in shiftedList.enumerated() {
+        if i > 0 && i.isMultiple(of: nth) {
+            nthElements.append(element)
+        }
+    }
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+getEvery(nth: 4, from: ["The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"])  //["fox", "lazy"]
+
+getEvery(nth: 2, from: [1,2,3,4,5,6,7,8,9]) //[2, 4, 6, 8]
 ```
 </details>
 
@@ -270,6 +301,24 @@ insertionSort(list) //[-1, 0, 1, 2, 3, 3, 5, 8, 9, 10, 26, 27]
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
+### Swift Standard Library Sort
+Link to Official Apple Developer Documentation - https://developer.apple.com/documentation/swift/array/1688499-sort
+```swift
+var integerArray = [5,8,2,3,656,9,1]
+var stringArray = ["India", "Norway", "France", "Canada", "Italy"]
+integerArray.sort() //[1, 2, 3, 5, 8, 9, 656]
+stringArray.sort() //["Canada", "France", "India", "Italy", "Norway"]
+```
+<details><summary>View Examples</summary>
+
+```swift
+integerArray.sort() //[1, 2, 3, 5, 8, 9, 656]
+stringArray.sort() //["Canada", "France", "India", "Italy", "Norway"]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
 ### fisher yates shuffle
 [Fisher-Yates algorithm](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) aka Knuth shuffle to shuffle an array creates a uniform shuffle of the array where each permutation is equally likely in O(n) time.
 ```swift
@@ -294,7 +343,24 @@ shuffle(arr1: foo) //[2,3,1] , foo = [1,2,3]
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
+### generic flatten
+Takes an array of arrays as input and transforms it to a flattened array of its type. ( handles optionals )
+```swift
+/// We use flat map to flatten the array and compact map to handle optionals
+/// - Parameter arrays: Array of arrays to flatten
+func flatten<T>(arrays: [[T?]]) -> [T] {
+    return arrays.flatMap{$0}.compactMap{$0}
+}
+```
+<details><summary>View Examples</summary>
 
+```swift
+flatten(arrays: [["a","b","c","d"],["e","f","g","y"]]) // ["a", "b", "c", "d", "e", "f", "g", "y"]
+flatten(arrays: [[1,nil,3,4],[5,6,7,8]]) // [1, 3, 4, 5, 6, 7, 8]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ## :heavy_division_sign: Math
 
@@ -805,6 +871,25 @@ snake(str: "AllThe-small Things") // "all_the_smal_things"
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
+### simple_snake_case
+Returns a new string in snake case
+```swift
+func snakeCase(_ string: String) -> String {
+    let arrayOfStrings = text.components(separatedBy: " ")
+    return arrayOfStrings.joined(separator: "_")
+}
+```
+<details><summary>View Examples</summary>
+    
+```swift
+    let text = "Snake case is the practice of writing compound words or phrases in which the elements are separated with one underscore character and no spaces."
+    snakeCase(text)
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a
+    
+
 ### first-unique-character
 Returns first unique character in a string
 ```swift
@@ -985,3 +1070,7 @@ public func neighborsForIndex(_ index: Int) -> [VertexType] {
 [Júlio John Tavares Ramos](https://github.com/JulioJohn)
 
 [Camilo Andres Ibarra Yepes](https://github.com/camiloibarrayepes)
+
+[Nicolas Combe](https://github.com/NicolasCombe5555)
+
+[William Spanfelner](https://github.com/Will-1-Am)

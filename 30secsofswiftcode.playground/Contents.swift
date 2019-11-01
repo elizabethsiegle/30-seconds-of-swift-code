@@ -40,6 +40,23 @@ chunk(arr: [1, 3, 5, 9], chunkSize: 4) //[[1, 3, 5, 9]]
 chunk(arr: ["hi", "yo", "bye", "bai"], chunkSize: 3) //[["hi", "yo", "bye"], ["bai"]]
 chunk(arr: ["young", "scrappy", "hungry"], chunkSize: 2) //[["young", "scrappy"], ["hungry"]]
 
+// everyNth - returns every nth element in a list
+func getEvery( nth: Int, from list: [Any] ) {
+    var nthElements = [Any]()
+    var shiftedList = list
+    shiftedList.insert(0, at: 0)
+    
+    for (i, element) in shiftedList.enumerated() {
+        if i > 0 && i.isMultiple(of: nth) {
+            nthElements.append(element)
+            print(nthElements)
+        }
+    }
+}
+getEvery(nth: 4, from: ["The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"])
+getEvery(nth: 2, from: [1,2,3,4,5,6,7,8,9])
+
+
 //count occurrences of a string in an array
 func countOccurrences(arr: [String], into: String) -> Int {
     return arr.reduce(0) { $1 == into ? $0 + 1 : $0 }
@@ -92,6 +109,13 @@ func insertionSort(_ array: [Int]) -> [Int] {
 }
 let list = [ 10, -1, 3, 9, 2, 27, 8, 5, 1, 3, 0, 26 ]
 insertionSort(list) //[-1, 0, 1, 2, 3, 3, 5, 8, 9, 10, 26, 27]
+
+//Using Swift Standard Library Sort
+// Link to Official Apple Developer Documentation - https://developer.apple.com/documentation/swift/array/1688499-sort
+var integerArray = [5,8,2,3,656,9,1]
+var stringArray = ["India", "Norway", "France", "Canada", "Italy"]
+integerArray.sort() //[1, 2, 3, 5, 8, 9, 656]
+stringArray.sort() //["Canada", "France", "India", "Italy", "Norway"]
 
 //fisher-yates shuffle
 func shuffle(arr1: [AnyHashable]) -> [AnyHashable] {
@@ -459,24 +483,56 @@ camelCaseToSnake(str: "string")
 camelCaseToSnake(str: String())
 camelCaseToSnake(str: "hacktoberFest🍁☔️🤖")
 
-///Flip takes a function as an argument, then makes the first argument the last.
+// Simple_snake_case - Convert a string to snake case
+func snakeCase(_ string: String) -> String {
+    let arrayOfStrings = text.components(separatedBy: " ")
+    return arrayOfStrings.joined(separator: "_")
+}
+let text = "Snake case is the practice of writing compound words or phrases in which the elements are separated with one underscore character and no spaces."
+
+snakeCase(text)
+
+/////Flip takes a function as an argument, then makes the first argument the last.
 func flip<A,B,C>(_ f:@escaping (A,B) -> C) -> (B,A) -> C {
-    return { (b,a) in f(a,b) }
+   return { (b,a) in f(a,b) }
 }
 
 //Flip example
-String.init(repeating:"🥳",count:5) == flip(String.init(repeating:count:))(5,"🥳") //true 
+String.init(repeating:"🥳",count:5) == flip(String.init(repeating:count:))(5,"🥳") //true
 // Return first unique character of string
 func firstUniqueCharacter(_ str: String) -> Character? {
-  var countDict: [Character: Int] = [:]
-  for char in str {
-    countDict[char] = (countDict[char] ?? 0) + 1
-  }
-  return str.filter{countDict[$0] == 1}.first
+ var countDict: [Character: Int] = [:]
+ for char in str {
+   countDict[char] = (countDict[char] ?? 0) + 1
+ }
+ return str.filter{countDict[$0] == 1}.first
 }
 firstUniqueCharacter("barbeque nation")
 
 // Find neighbors from vertex
 public func neighborsForIndex(_ index: Int) -> [VertexType] {
+   return edges[index].map({self.vertices[$0.v]})
+}
+
+//MARK: Flatten function
+let optionalArrays = [[1,nil,3,4],[5,6,7,8]]
+let arrays = [["a","b","c","d"],["e","f","g","y"]]
+
+
+/// We use flat map to flatten the array and compact map to handle optionals
+/// - Parameter arrays: Array of arrays to flatten
+func flatten<T>(arrays: [[T?]]) -> [T] {
+    return arrays.flatMap{$0}.compactMap{$0}
+}
+
+// Find neighbors from vertex
+public func neighborsForIndex(_ index: Int) -> [VertexType] {
     return edges[index].map({self.vertices[$0.v]})
 }
+
+flatten(arrays: arrays) // ["a", "b", "c", "d", "e", "f", "g", "y"]
+flatten(arrays: optionalArrays) // [1, 3, 4, 5, 6, 7, 8]
+
+assert(flatten(arrays: arrays).count == 8)
+assert(flatten(arrays: optionalArrays).count == 7)
+
