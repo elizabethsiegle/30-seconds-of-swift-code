@@ -455,6 +455,20 @@ isSorted(arr: [1, 2, 2, 4, 8])
 isSorted(arr: [8, 4, 4, 2, 1])
 isSorted(arr: [1, 4, 2, 8, 4])
 
+//Returns 1 if array is sorted in ascending order (OPTION 2)
+//-1 if array is sorted in descending order
+//0 if array is not sorted
+
+func sortedArray (arr: [Int]) -> Int {
+    let sortedArr = arr.sorted(by: {$1>$0})
+    return arr == sortedArr ? 1 : arr == sortedArr.reversed() ?  -1 :  0
+}
+
+//Input sortedArray(arr: [1,2,3,4,5]) - Output 1
+//Input sortedArray(arr: [5,4,3,2,1]) - Output -1
+//Input sortedArray(arr: [6,2,3,4,8]) - Output 0
+
+
 // Convert camel case string to snake case:
 func camelCaseToSnake(str: String) -> String {
     guard let regex = try? NSRegularExpression(pattern: "([a-z0-9])([A-Z])", options: []) else {
@@ -479,26 +493,26 @@ let text = "Snake case is the practice of writing compound words or phrases in w
 snakeCase(text)
 
 /////Flip takes a function as an argument, then makes the first argument the last.
-//func flip<A,B,C>(_ f:@escaping (A,B) -> C) -> (B,A) -> C {
-//    return { (b,a) in f(a,b) }
-//}
-//
-////Flip example
-//String.init(repeating:"🥳",count:5) == flip(String.init(repeating:count:))(5,"🥳") //true
-//// Return first unique character of string
-//func firstUniqueCharacter(_ str: String) -> Character? {
-//  var countDict: [Character: Int] = [:]
-//  for char in str {
-//    countDict[char] = (countDict[char] ?? 0) + 1
-//  }
-//  return str.filter{countDict[$0] == 1}.first
-//}
-//firstUniqueCharacter("barbeque nation")
-//
-//// Find neighbors from vertex
-//public func neighborsForIndex(_ index: Int) -> [VertexType] {
-//    return edges[index].map({self.vertices[$0.v]})
-//}
+func flip<A,B,C>(_ f:@escaping (A,B) -> C) -> (B,A) -> C {
+   return { (b,a) in f(a,b) }
+}
+
+//Flip example
+String.init(repeating:"🥳",count:5) == flip(String.init(repeating:count:))(5,"🥳") //true
+// Return first unique character of string
+func firstUniqueCharacter(_ str: String) -> Character? {
+ var countDict: [Character: Int] = [:]
+ for char in str {
+   countDict[char] = (countDict[char] ?? 0) + 1
+ }
+ return str.filter{countDict[$0] == 1}.first
+}
+firstUniqueCharacter("barbeque nation")
+
+// Find neighbors from vertex
+public func neighborsForIndex(_ index: Int) -> [VertexType] {
+   return edges[index].map({self.vertices[$0.v]})
+}
 
 //MARK: Flatten function
 let optionalArrays = [[1,nil,3,4],[5,6,7,8]]
@@ -511,10 +525,14 @@ func flatten<T>(arrays: [[T?]]) -> [T] {
     return arrays.flatMap{$0}.compactMap{$0}
 }
 
+// Find neighbors from vertex
+public func neighborsForIndex(_ index: Int) -> [VertexType] {
+    return edges[index].map({self.vertices[$0.v]})
+}
+
 flatten(arrays: arrays) // ["a", "b", "c", "d", "e", "f", "g", "y"]
 flatten(arrays: optionalArrays) // [1, 3, 4, 5, 6, 7, 8]
 
 assert(flatten(arrays: arrays).count == 8)
 assert(flatten(arrays: optionalArrays).count == 7)
-
 

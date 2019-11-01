@@ -968,6 +968,25 @@ isSorted(arr: [1, 4, 2, 8, 4]) // 0
 ```
 </details>
 
+### is sorted 2
+Returns 1 if array is sorted in ascending order, -1 if descending order, and 0 if unsorted - OPTION 2 shortest
+
+```swift
+func sortedArray (arr: [Int]) -> Int {
+    let sortedArr = arr.sorted(by: {$1>$0})
+    return arr == sortedArr ? 1 : arr == sortedArr.reversed() ?  -1 :  0
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+//Input sortedArray(arr: [1,2,3,4,5]) - Output 1
+//Input sortedArray(arr: [5,4,3,2,1]) - Output -1
+//Input sortedArray(arr: [6,2,3,4,8]) - Output 0
+```
+</details>
+
+
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### camel case string to snake case
@@ -1049,6 +1068,8 @@ public func neighborsForIndex(_ index: Int) -> [VertexType] {
 [Alexey Ivanov](https://github.com/t0rn)
 
 [Júlio John Tavares Ramos](https://github.com/JulioJohn)
+
+[Camilo Andres Ibarra Yepes](https://github.com/camiloibarrayepes)
 
 [Nicolas Combe](https://github.com/NicolasCombe5555)
 
