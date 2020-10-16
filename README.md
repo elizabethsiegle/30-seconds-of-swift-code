@@ -54,6 +54,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#nth-element"><code>nthElement</code></a></li>
 <li><a href = "#filter-non-unique"><code>filterNonUnique</code></a></li>
 <li><a href = "#generic-flatten"><code>genericFlatten</code></a></li>
+<li><a href = "#Print a string n times"><code>Print a string n times</code></a></li>
 
 </ul></details>
 
@@ -1045,6 +1046,27 @@ public func neighborsForIndex(_ index: Int) -> [VertexType] {
 }
 ```
 
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### Print a string n times
+
+Print a string n times
+
+```swift
+public func printStringNTimes(_ n: Int, _ string: String) {
+    for _ in 0..<n {
+        print(string)
+    }
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+printStringNTimes(10, "Hello Swift") // Prints Hello Swift 10 times
+```
+</details>
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ## Contributors
