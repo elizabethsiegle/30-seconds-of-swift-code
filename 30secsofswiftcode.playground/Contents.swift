@@ -536,3 +536,10 @@ flatten(arrays: optionalArrays) // [1, 3, 4, 5, 6, 7, 8]
 assert(flatten(arrays: arrays).count == 8)
 assert(flatten(arrays: optionalArrays).count == 7)
 
+//MARK: Print a String n times
+public func printStringNTimes(_ n: Int, _ string: String) {
+    for _ in 0..<n {
+        print(string)
+    }
+}
+printStringNTimes(10, "Hello Swift")
