@@ -49,6 +49,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#is-lower-case"><code>isLowerCase</code></a></li>
 <li><a href = "#is-upper-case"><code>isUpperCase</code></a></li>
 <li><a href = "#palindrome"><code>palindrome</code></a></li>
+<li><a href = "#anagram"><code>anagram</code></a></li>
 <li><a href = "#drop"><code>drop</code></a></li>
 <li><a href = "#drop-right-while"><code>dropRightWhile</code></a></li>
 <li><a href = "#nth-element"><code>nthElement</code></a></li>
@@ -725,6 +726,28 @@ func palindrome(str: String) -> Bool {
 palindrome(str: "racecar") //true
 palindrome(str: "Madam") //true
 palindrome(str: "lizzie") //false
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### anagram 
+Returns `True` if the 2 given strings are perfect anagrams of each other, `False` if otherwise.
+```swift
+/// Return `true` if the 2 given strings are "perfect" anagrams.
+/// (they consist of the same characters excluding whitespace)
+func anagram(_ str1: String, _ str2: String) -> Bool {
+    let s1 = str1.filter { !$0.isWhitespace }.lowercased()
+    let s2 = str2.filter { !$0.isWhitespace }.lowercased()
+    return s1.count == s2.count && s1.sorted() == s2.sorted()
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+anagram("abcd3", "3acdb") // true
+anagram("123", "456") // false
+anagram("Buckethead", "Death Cube K") // true
 ```
 </details>
 
