@@ -288,6 +288,18 @@ palindrome(str: "racecar") //true
 palindrome(str: "Madam") //true
 palindrome(str: "lizzie") //false
 
+/// Return `true` if the 2 given strings are "perfect" anagrams.
+/// (they consist of the same characters excluding whitespace)
+func anagram(_ str1: String, _ str2: String) -> Bool {
+    let s1 = str1.filter { !$0.isWhitespace }.lowercased()
+    let s2 = str2.filter { !$0.isWhitespace }.lowercased()
+    return s1.count == s2.count && s1.sorted() == s2.sorted()
+}
+
+anagram("abcd3", "3acdb") // true
+anagram("123", "456") // false
+anagram("Buckethead", "Death Cube K") // true
+
 //Returns a new array with n elements removed from the left.
 func drop(arr: [AnyHashable], num: Int) -> [AnyHashable] {
     return Array(arr.dropFirst(num)) //need Array() to concert ArraySlice to Array
