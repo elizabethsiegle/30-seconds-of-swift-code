@@ -362,6 +362,25 @@ flatten(arrays: [[1,nil,3,4],[5,6,7,8]]) // [1, 3, 4, 5, 6, 7, 8]
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
+### comma separated
+Takes an array of strings and returns a single string with each element from the input list separated by commas.
+
+```swift
+/// Return the elements of `strings` separated by ", "
+func commaSeparated(_ strings: [String]) -> String {
+    return strings.joined(separator: ", ")
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+let strs = ["Foo", "Bar", "Baz", "Qux"]
+commaSeparated(strs) // "Foo, Bar, Baz, Qux"
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
 ## :heavy_division_sign: Math
 
 ### average 
