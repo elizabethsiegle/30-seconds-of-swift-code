@@ -54,6 +54,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#nth-element"><code>nthElement</code></a></li>
 <li><a href = "#filter-non-unique"><code>filterNonUnique</code></a></li>
 <li><a href = "#generic-flatten"><code>genericFlatten</code></a></li>
+<li><a href = "#comma-separated"><code>commaSeparated</code></a></li>
 
 </ul></details>
 
