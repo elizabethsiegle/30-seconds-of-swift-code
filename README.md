@@ -90,6 +90,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#snake"><code>snake</code></a></li>
 <li><a href = "#simple_snake_case"><code>simple_snake_case</code></a></li>
 <li><a href = "#first-unique-character"><code>firstUniqueCharacter</code></a></li>
+<li><a href = "#repeating"><code>repeating</code></a></li>
 </ul></details>
 
 <hr></hr> 
@@ -887,7 +888,7 @@ func snakeCase(_ string: String) -> String {
 ```
 </details>
 
-<br><a href = "#table-of-contents">:arrow_up: Back to top</a
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
     
 
 ### first-unique-character
@@ -905,6 +906,28 @@ func firstUniqueCharacter(_ str: String) -> Character? {
 
 ```swift
 firstUniqueCharacter("barbeque nation") //"r"
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### repeating
+Prints a string N times without using loops.
+```swift
+func repeating(_ repeatedValue: String, count: Int) {
+    guard count > 0 else {
+        return
+    }
+    
+    print(repeatedValue)
+    
+    repeating(repeatedValue, count: count - 1)
+}
+```
+<details><summary>View Examples</summary>
+    
+```swift
+repeating("Text", count: 5)
 ```
 </details>
 

@@ -509,6 +509,19 @@ func firstUniqueCharacter(_ str: String) -> Character? {
 }
 firstUniqueCharacter("barbeque nation")
 
+// Prints a string N times without using loops.
+func repeating(_ repeatedValue: String, count: Int) {
+    guard count > 0 else {
+        return
+    }
+    
+    print(repeatedValue)
+    
+    repeating(repeatedValue, count: count - 1)
+}
+
+repeating("Text", count: 5)
+
 // Find neighbors from vertex
 public func neighborsForIndex(_ index: Int) -> [VertexType] {
    return edges[index].map({self.vertices[$0.v]})
