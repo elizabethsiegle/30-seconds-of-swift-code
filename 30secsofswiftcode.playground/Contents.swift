@@ -504,6 +504,14 @@ let text = "Snake case is the practice of writing compound words or phrases in w
 
 snakeCase(text)
 
+/// Return the elements of `strings` separated by ", "
+func commaSeparated(_ strings: [String]) -> String {
+    return strings.joined(separator: ", ")
+}
+
+let strs = ["Foo", "Bar", "Baz", "Qux"]
+commaSeparated(strs) // "Foo, Bar, Baz, Qux"
+
 /////Flip takes a function as an argument, then makes the first argument the last.
 func flip<A,B,C>(_ f:@escaping (A,B) -> C) -> (B,A) -> C {
    return { (b,a) in f(a,b) }

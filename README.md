@@ -55,6 +55,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#nth-element"><code>nthElement</code></a></li>
 <li><a href = "#filter-non-unique"><code>filterNonUnique</code></a></li>
 <li><a href = "#generic-flatten"><code>genericFlatten</code></a></li>
+<li><a href = "#comma-separated"><code>commaSeparated</code></a></li>
 
 </ul></details>
 
@@ -359,6 +360,25 @@ func flatten<T>(arrays: [[T?]]) -> [T] {
 ```swift
 flatten(arrays: [["a","b","c","d"],["e","f","g","y"]]) // ["a", "b", "c", "d", "e", "f", "g", "y"]
 flatten(arrays: [[1,nil,3,4],[5,6,7,8]]) // [1, 3, 4, 5, 6, 7, 8]
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### comma separated
+Takes an array of strings and returns a single string with each element from the input list separated by commas.
+
+```swift
+/// Return the elements of `strings` separated by ", "
+func commaSeparated(_ strings: [String]) -> String {
+    return strings.joined(separator: ", ")
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+let strs = ["Foo", "Bar", "Baz", "Qux"]
+commaSeparated(strs) // "Foo, Bar, Baz, Qux"
 ```
 </details>
 
