@@ -1047,6 +1047,29 @@ public func neighborsForIndex(_ index: Int) -> [VertexType] {
 
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
+### Most frequenly
+
+Returns the most frequenly character in an array
+
+```swift
+func mostFreq(array: [AnyHashable]) -> String {
+    var counts = [AnyHashable: Int]()
+
+    myArray.forEach { counts[$0] = (counts[$0] ?? 0) + 1 }
+
+    if let (value, count) = counts.max(by: {$0.1 < $1.1}) {
+        return "the value: \(value) occurs \(count) times"
+    }
+    return ""
+}
+
+let myArray = ["a", 2, 4, 2, "b", 2, 3, 4, 2] as [AnyHashable]
+
+mostFreq(array: myArray)
+```
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
 ## Contributors
 
 [//]: #*
