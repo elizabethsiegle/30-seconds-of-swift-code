@@ -229,6 +229,12 @@ func justValues(dict: Dictionary<AnyHashable, AnyHashable>) -> [AnyHashable] {
 }
 justValues(dict: dict) //[Olaf, Mushu, Fleeko]
 
+//bytes from string
+func bytes(_ str: String) -> Int {
+    return str.utf8.count
+}
+bytes("Hello")
+
 //capitalize first letter of whole string, leaving the rest the same
 func capitalizeFirst(str: String) -> String {
     var components = str.components(separatedBy: " ")
