@@ -637,6 +637,8 @@ bytes("Hello")
 ```
 </details>
 
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
 ### capitalize first
 Capitalizes the first letter of a string, leaving the rest the same.
 ```swift
