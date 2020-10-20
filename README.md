@@ -42,6 +42,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#all-unique"><code>allUnique</code></a></li>
 <li><a href = "#just-keys"><code>justKeys</code></a></li>
 <li><a href = "#just-values"><code>justValues</code></a></li>
+<li><a href = "#bytes-from-string"><code>bytesFromString</code></a></li>
 <li><a href = "#capitalize-first"><code>capitalizeFirst</code></a></li>
 <li><a href = "#capitalize-every-word"><code>capitalizeEveryWord</code></a></li>
 <li><a href = "#count-vowels"><code>countVowels</code></a></li>
@@ -82,7 +83,9 @@ This project contains plenty of useful snippets which can help beginners and new
 
 ### :scroll: String
 
-<details><summary>View contents</summary> <ul><li><a href = "#capitalize-first"><code>capitalizeFirst</code></a></li>
+<details><summary>View contents</summary> <ul>
+<li><a href = "#bytes-from-string"><code>bytesFromString</code></a></li>
+<li><a href = "#capitalize-first"><code>capitalizeFirst</code></a></li>
 <li><a href = "#capitalize-everyword"><code>capitalizeEveryWord</code></a></li>
 <li><a href = "#count-vowels"><code>countVowels</code></a></li>
 <li><a href = "#lower-case-first-letter-of-first-word"><code>lowerCaseFirstLetterOfFirstWord</code></a></li>
@@ -619,6 +622,22 @@ justValues(dict: dict) //[Olaf, Mushu, Fleeko]
 <br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ## :scroll: String
+
+### bytes from string
+Get bytes of a string.
+```swift
+func bytes(_ str: String) -> Int {
+    return str.utf8.count
+}
+```
+<details><summary>View Examples</summary>
+
+```
+bytes("Hello")
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
 
 ### capitalize first
 Capitalizes the first letter of a string, leaving the rest the same.
