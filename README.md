@@ -57,6 +57,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#filter-non-unique"><code>filterNonUnique</code></a></li>
 <li><a href = "#generic-flatten"><code>genericFlatten</code></a></li>
 <li><a href = "#comma-separated"><code>commaSeparated</code></a></li>
+<li><a href = "#most-frequent"><code>mostFrequent</code></a></li>
 
 </ul></details>
 
@@ -382,6 +383,35 @@ func commaSeparated(_ strings: [String]) -> String {
 ```swift
 let strs = ["Foo", "Bar", "Baz", "Qux"]
 commaSeparated(strs) // "Foo, Bar, Baz, Qux"
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### most frequent
+Takes an array and returns the most frequent element that appears in the array.
+The type of elements in the array must conform hashable.
+
+```swift
+// Return the most frequent element that appears in the array
+func mostFrequent<Type: Hashable>(_ arr: [Type]) -> Type? {
+    var dict = [Type: Int]()
+    for element in arr {
+        if dict[element] == nil {
+            dict[element] = 1
+        } else {
+            dict[element]! += 1
+        }
+    }
+    return dict.sorted(by: { $0.1 > $1.1 }).first?.key
+}
+```
+<details><summary>View Examples</summary>
+
+```swift
+mostFrequent([1, 2, 5, 4, 1, 9, 8, 7, 4, 5, 1, 5, 1]) // 1
+mostFrequent(["a", "b", "c", "a"]) // "a"
+mostFrequent([]) // nil
 ```
 </details>
 
@@ -1159,3 +1189,5 @@ public func neighborsForIndex(_ index: Int) -> [VertexType] {
 [Nicolas Combe](https://github.com/NicolasCombe5555)
 
 [William Spanfelner](https://github.com/Will-1-Am)
+
+[Natchanon A.](https://github.com/maxnatchanon)

@@ -518,6 +518,23 @@ func commaSeparated(_ strings: [String]) -> String {
 let strs = ["Foo", "Bar", "Baz", "Qux"]
 commaSeparated(strs) // "Foo, Bar, Baz, Qux"
 
+// Return the most frequent element that appears in the array
+func mostFrequent<Type: Hashable>(_ arr: [Type]) -> Type? {
+    var dict = [Type: Int]()
+    for element in arr {
+        if dict[element] == nil {
+            dict[element] = 1
+        } else {
+            dict[element]! += 1
+        }
+    }
+    return dict.sorted(by: { $0.1 > $1.1 }).first?.key
+}
+
+mostFrequent([1, 2, 5, 4, 1, 9, 8, 7, 4, 5, 1, 5, 1]) // 1
+mostFrequent(["a", "b", "c", "a"]) // "a"
+mostFrequent([]) // nil
+
 /////Flip takes a function as an argument, then makes the first argument the last.
 func flip<A,B,C>(_ f:@escaping (A,B) -> C) -> (B,A) -> C {
    return { (b,a) in f(a,b) }
