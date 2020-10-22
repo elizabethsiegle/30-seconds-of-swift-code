@@ -181,6 +181,7 @@ func lcm1(num1: Int, num2: Int) -> Int {
 }
 lcm1(num1: 12, num2: 7) //84
 
+//returns the length of a string in bytes
 func byteSize(of string: String) -> Int {
     return string.utf16.count
 }
