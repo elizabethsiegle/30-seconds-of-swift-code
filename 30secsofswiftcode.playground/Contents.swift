@@ -592,3 +592,7 @@ flatten(arrays: optionalArrays) // [1, 3, 4, 5, 6, 7, 8]
 assert(flatten(arrays: arrays).count == 8)
 assert(flatten(arrays: optionalArrays).count == 7)
 
+// returns length of a string in bytes
+func stringLenghtInBytes(string: String) -> Int {
+    return (string as NSString).length
+}
