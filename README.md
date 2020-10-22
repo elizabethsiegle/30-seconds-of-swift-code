@@ -58,6 +58,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#generic-flatten"><code>genericFlatten</code></a></li>
 <li><a href = "#comma-separated"><code>commaSeparated</code></a></li>
 <li><a href = "#most-frequent"><code>mostFrequent</code></a></li>
+<li><a href = "#byte-size"><code>repeating</code></a></li>
 
 </ul></details>
 
@@ -97,6 +98,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#simple_snake_case"><code>simple_snake_case</code></a></li>
 <li><a href = "#first-unique-character"><code>firstUniqueCharacter</code></a></li>
 <li><a href = "#repeating"><code>repeating</code></a></li>
+<li><a href = "#byte-size"><code>repeating</code></a></li>
 </ul></details>
 
 <hr></hr> 
@@ -1020,6 +1022,22 @@ func repeating(_ repeatedValue: String, count: Int) {
     
 ```swift
 repeating("Text", count: 5)
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### byte-size
+Returns length of string in bytes
+```swift
+func stringLenghtInBytes(string: String) -> Int {
+    return (string as NSString).length
+}
+```
+<details><summary>View Examples</summary>
+
+```
+stringLenghtInBytes("Hello")
 ```
 </details>
 
