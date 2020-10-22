@@ -235,7 +235,7 @@ func bytes(_ str: String) -> Int {
 }
 bytes("Hello")
 
-//anagram
+//Checks if two strings are anagrams
 func isAnagram(_ firstString: String, _ secondString: String) -> Bool {
     return firstString.lowercased().sorted() == secondString.lowercased().sorted()
 }
