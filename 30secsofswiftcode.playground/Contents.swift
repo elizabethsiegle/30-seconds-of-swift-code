@@ -235,6 +235,13 @@ func bytes(_ str: String) -> Int {
 }
 bytes("Hello")
 
+//anagram
+func isAnagram(_ firstString: String, _ secondString: String) -> Bool {
+    return firstString.lowercased().sorted() == secondString.lowercased().sorted()
+}
+isAnagram("Dog", "God")
+isAnagram("heidegger", "degree")
+
 //capitalize first letter of whole string, leaving the rest the same
 func capitalizeFirst(str: String) -> String {
     var components = str.components(separatedBy: " ")
