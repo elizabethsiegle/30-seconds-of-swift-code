@@ -181,6 +181,11 @@ func lcm1(num1: Int, num2: Int) -> Int {
 }
 lcm1(num1: 12, num2: 7) //84
 
+func byteSize(of string: String) -> Int {
+    return string.utf16.count
+}
+byteSize(of: "What is my size")
+
 //least common multiple of an array using the first lcm
 func lcm2(arr1: [Int]) -> Int {
     return arr1.reduce(1) { lcm1(num1: $0, num2: $1) }
