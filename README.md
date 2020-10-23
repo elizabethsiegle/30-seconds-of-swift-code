@@ -97,6 +97,7 @@ This project contains plenty of useful snippets which can help beginners and new
 <li><a href = "#simple_snake_case"><code>simple_snake_case</code></a></li>
 <li><a href = "#first-unique-character"><code>firstUniqueCharacter</code></a></li>
 <li><a href = "#repeating"><code>repeating</code></a></li>
+<li><a href = "#size"><code>size</code></a></li>
 </ul></details>
 
 <hr></hr> 
@@ -1020,6 +1021,26 @@ func repeating(_ repeatedValue: String, count: Int) {
     
 ```swift
 repeating("Text", count: 5)
+```
+</details>
+
+<br><a href = "#table-of-contents">:arrow_up: Back to top</a>
+
+### size
+Returns the length of a string in bytes by encoding.
+```swift
+func size(of string: String, using encoding: String.Encoding) -> Int {
+    guard let data = string.data(using: encoding) else {
+        return 0
+    }
+    
+    return data.count
+}
+```
+<details><summary>View Examples</summary>
+    
+```swift
+size(of: "Text", using: .utf8)
 ```
 </details>
 

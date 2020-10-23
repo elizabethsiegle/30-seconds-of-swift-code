@@ -565,6 +565,16 @@ func repeating(_ repeatedValue: String, count: Int) {
 
 repeating("Text", count: 5)
 
+func size(of string: String, using encoding: String.Encoding) -> Int {
+    guard let data = string.data(using: encoding) else {
+        return 0
+    }
+    
+    return data.count
+}
+
+size(of: "Text", using: .utf8)
+
 // Find neighbors from vertex
 public func neighborsForIndex(_ index: Int) -> [VertexType] {
    return edges[index].map({self.vertices[$0.v]})
