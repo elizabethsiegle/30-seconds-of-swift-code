@@ -57,6 +57,23 @@ getEvery(nth: 4, from: ["The", "quick", "brown", "fox", "jumped", "over", "the",
 getEvery(nth: 2, from: [1,2,3,4,5,6,7,8,9])
 
 
+//removes elements from the end of an array until the passed function
+//returns true and returns the remaining elements in the array
+func dropDownRight<T: Any>(from array: [T], while predicate: (T) -> Bool) -> [T] {
+    var result = array
+    
+    for element in array.reversed() {
+        if predicate(element) { break }
+        result = result.dropLast()
+    }
+    
+    return result
+}
+
+dropDownRight(from: [1, 2, 3, 4, 5, 6], while: { $0 > 3 }) //[1, 2, 3]
+dropDownRight(from: ["Hi", "my", "name", "is", "Bob"]) { $0.count > 3 } //["Hi", "my", "name"]
+
+
 //count occurrences of a string in an array
 func countOccurrences(arr: [String], into: String) -> Int {
     return arr.reduce(0) { $1 == into ? $0 + 1 : $0 }
